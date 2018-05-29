@@ -1,0 +1,17 @@
+# Load Graph
+
+## Create data struct of vertex and edge.
+vertex: word_id/doc_id, vector(topic_id, count)
+
+edge: vector(occur_time, topic_id)
+
+## Divide dataset
+The dataset formatted by powergraph is a matrix, with no total number of vertex or edge.
+Use python count how many vertex and edge in the raw dataset and write them to the first and second row of the file.
+Write the matrix to the file with single space as seperate.
+daily_kos doc_word_count.tsv, edge:353160 doc:3430 word:6906 vertex:10336
+Use hash-partitioner.pl to divide raw dataset(doc_word_count.tsv) into four parts for each worker of graphlite.
+
+## load graph from dataset
+Load graph from dataset file.
+Test simple send message and aggragator.
