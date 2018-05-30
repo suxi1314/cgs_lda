@@ -1,11 +1,11 @@
 # Load Graph
 
 ## Create data struct of vertex and edge.
-vertex: word_id/doc_id, vector(topic_id, count)
+vertex: vector(topic_id, count)
 
 edge: vector(occur_time, topic_id)
 
-## Divide dataset
+## Divide dataset(done)
 The dataset formatted by powergraph is a matrix, with no total number of vertex or edge.
 Use python count how many vertex and edge in the raw dataset and write them to the first and second row of the file.
 Write the matrix to the file with single space as seperate.
