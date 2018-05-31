@@ -96,7 +96,7 @@ public:
         return m_n_value_size;
     }
     int getEdgeValueSize() {
-        m_e_value_size = sizeof(double);
+        m_e_value_size = sizeof(edge_data);
         return m_e_value_size;
     }
     int getMessageValueSize() {
@@ -107,7 +107,9 @@ public:
         unsigned long long last_vertex;
         unsigned long long from;
         unsigned long long to;
-        double weight = 0;
+        unsigned long long ntokens;
+
+        edge_data weight = edge_data();
         
         vertex_data value = vertex_data();
         int outdegree = 0;
@@ -117,7 +119,8 @@ public:
         // Note: modify this if an edge weight is to be read
         //       modify the 'weight' variable
 
-        sscanf(line, "%lld %lld", &from, &to);
+        sscanf(line, "%lld %lld %lld", &from, &to, &ntokens);
+        weight = edge_data(ntokens);
         addEdge(from, to, &weight);
 
         last_vertex = from;
@@ -198,6 +201,7 @@ public:
 class VERTEX_CLASS_NAME(Graph): public Graph {
 public:
     VERTEX_CLASS_NAME(Aggregator)* aggregator;
+    VERTEX_CLASS_NAME(Edge)* ;
 
 public:
     // argv[0]: cgs_lda.so
