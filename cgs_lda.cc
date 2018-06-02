@@ -76,10 +76,7 @@ typedef std::vector< topic_id_type > assignment_type;
 struct vertex_data{
     // The count of tokens in each topic.
     factor_type factor;
-    // The count of out edges.
-    int16_t is_doc;
-    int16_t is_word;
-    vertex_data() : is_doc(0), is_word(0), factor(NTOPICS) { }
+    vertex_data() : factor(NTOPICS) { }
 
 };
 
@@ -195,7 +192,7 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld: %d %d\n", (unsigned long long)vid, value.is_doc, value.is_word);
+            int n = sprintf(s, "%lld: \n", (unsigned long long)vid);
             writeNextResLine(s, n);
         }
     }
@@ -233,18 +230,30 @@ public:
         // output number of outedge 
         vertex_data val = vertex_data();
         if (getSuperstep() == 0) {
-            val.is_doc = is_doc();
-            val.is_word = is_word();
+            collect();
         } else {
             voteToHalt(); return;
         }
         * mutableValue() = val;
     }
+    // judge if a vertex is doc
     int is_doc(){
         return (getOutEdgeIterator().size())? 1:0;
     }
+    // judge if a vertex is word
     int is_word(){
         return (getOutEdgeIterator().size())? 0:1;
+    }
+    // collect assignment from edge
+    int collect(){
+        // count number of tokens on out edges 
+        size_t ntokens;
+        int64_t vid = getVertexId();
+        OutEdgeIterator outEdges = getOutEdgeIterator();
+        for ( ; ! outEdges.done(); outEdges.next() ) {
+            ntokens += (outEdges.getValue()).assignment.size();
+        }
+        printf("vid=%lld, ntokens=%zu\n", vid, ntokens);
     }
 };
 
