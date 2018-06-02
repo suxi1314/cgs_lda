@@ -46,7 +46,7 @@
 
 #ifdef DEBUG // run on vm
 size_t NTOPICS = 2;
-size_t NTOKENS = 2;
+size_t NTOKEN = 2;
 #endif
 
 #ifdef RELEASE // run on server
@@ -89,7 +89,7 @@ struct vertex_data{
 struct edge_data{
     // The assignment of all tokens
     assignment_type assignment;
-    edge_data(size_t ntokens = 0) : assignment(ntokens, NULL_TOPIC) { }
+    edge_data(size_t ntoken = 0) : assignment(ntoken, NULL_TOPIC) { }
 };
 
 
@@ -127,7 +127,7 @@ public:
         unsigned long long to;
 
         edge_data weight = 0;
-        size_t ntokens = 0;
+        size_t ntoken = 0;
 
         vertex_data value = vertex_data();
         int outdegree = 0;
@@ -139,16 +139,19 @@ public:
         //       modify the 'weight' variable
 
         // read edge weight
-        sscanf(line, "%lld %lld %zu", &from, &to, &ntokens);
+        sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
 #ifdef DEBUG
-        ntokens = NTOKENS; 
+        weight = edge_data(NTOKEN);
 #endif
-        weight = edge_data(ntokens);
+
+#ifdef RELEASE
+        weight = edge_data(ntoken);
+#endif
 
         // change word vertex vid
         to = m_total_vertex + to;
 
-        addEdge(from, to, &ntokens);
+        addEdge(from, to, &ntoken);
 
         last_vertex = from;
         ++outdegree;
@@ -159,11 +162,14 @@ public:
             //       modify the 'weight' variable
 
             // read edge weight
-            sscanf(line, "%lld %lld %zu", &from, &to, &ntokens);
+            sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
 #ifdef DEBUG
-            ntokens = NTOKENS; 
+            weight = edge_data(NTOKEN);
 #endif
-            weight = edge_data(ntokens);
+
+#ifdef RELEASE
+            weight = edge_data(ntoken);
+#endif
             // change word vertex vid
             to = m_total_vertex + to;
 
