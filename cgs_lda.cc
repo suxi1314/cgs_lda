@@ -64,8 +64,9 @@ struct vertex_data{
     // The count of tokens in each topic.
     factor_type factor;
     // The count of out edges.
-    int64_t n_out;
-    vertex_data() : n_out(0), factor(NTOPICS) { }
+    int16_t is_doc;
+    int16_t is_word;
+    vertex_data() : is_doc(0), is_word(0), factor(NTOPICS) { }
 
 };
 
@@ -165,7 +166,7 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld: %lld\n", (unsigned long long)vid, value.n_out);
+            int n = sprintf(s, "%lld: %d %d\n", (unsigned long long)vid, value.is_doc, value.is_word);
             writeNextResLine(s, n);
         }
     }
@@ -203,11 +204,18 @@ public:
         // output number of outedge 
         vertex_data val = vertex_data();
         if (getSuperstep() == 0) {
-            val.n_out = getOutEdgeIterator().size(); // get number of out edges.
+            val.is_doc = is_doc();
+            val.is_word = is_word();
         } else {
             voteToHalt(); return;
         }
         * mutableValue() = val;
+    }
+    int is_doc(){
+        return (getOutEdgeIterator().size())? 1:0;
+    }
+    int is_word(){
+        return (getOutEdgeIterator().size())? 0:1;
     }
 };
 
