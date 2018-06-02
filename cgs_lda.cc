@@ -31,6 +31,11 @@
 #include <math.h>
 
 #include "GraphLite.h"
+
+
+#define DEBUG // run on vm
+
+
 /** change VERTEX_CLASS_NAME(name) definition to use a different class name */
 #define VERTEX_CLASS_NAME(name) cgs_lda##name
 
@@ -38,7 +43,14 @@
 /**
  * \brief the total number of topics to uses
  */
-size_t NTOPICS = 2; //50 can't run on single machine
+
+#ifdef DEBUG // run on vm
+size_t NTOPICS = 2;
+#endif
+
+#ifdef RELEASE // run on server
+size_t NTOPICS = 50; 
+#endif
 
 typedef long count_type;
 // factor_type is used to store the counts of tokens(word,doc pair) in each topic for words/docs.
@@ -101,7 +113,7 @@ public:
         return m_n_value_size;
     }
     int getEdgeValueSize() {
-        m_e_value_size = sizeof(double);
+        m_e_value_size = sizeof(edge_data);
         return m_e_value_size;
     }
     int getMessageValueSize() {
@@ -112,23 +124,30 @@ public:
         unsigned long long last_vertex;
         unsigned long long from;
         unsigned long long to;
-        double weight = 0;
-        
+
+        edge_data weight = 0;
+        size_t ntokens = 0;
+
         vertex_data value = vertex_data();
         int outdegree = 0;
         
+
         const char *line= getEdgeLine();
 
         // Note: modify this if an edge weight is to be read
         //       modify the 'weight' variable
 
         // read edge weight
-        sscanf(line, "%lld %lld %lf", &from, &to, &weight);
+        sscanf(line, "%lld %lld %zu", &from, &to, &ntokens);
+#ifdef DEBUG
+        ntokens = 1; 
+#endif
+        weight = edge_data(ntokens);
 
         // change word vertex vid
         to = m_total_vertex + to;
 
-        addEdge(from, to, &weight);
+        addEdge(from, to, &ntokens);
 
         last_vertex = from;
         ++outdegree;
@@ -139,8 +158,11 @@ public:
             //       modify the 'weight' variable
 
             // read edge weight
-            sscanf(line, "%lld %lld %lfs", &from, &to, &weight);
-
+            sscanf(line, "%lld %lld %zu", &from, &to, &ntokens);
+#ifdef DEBUG
+            ntokens = 1; 
+#endif
+            weight = edge_data(ntokens);
             // change word vertex vid
             to = m_total_vertex + to;
 
@@ -198,7 +220,7 @@ public:
 };
 
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
-class VERTEX_CLASS_NAME(): public Vertex <vertex_data, double, double> {
+class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, double> {
 public:
     void compute(MessageIterator* pmsgs) {
         // output number of outedge 
