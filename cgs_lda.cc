@@ -46,6 +46,7 @@
 
 #ifdef DEBUG // run on vm
 size_t NTOPICS = 2;
+size_t NTOKENS = 2;
 #endif
 
 #ifdef RELEASE // run on server
@@ -140,7 +141,7 @@ public:
         // read edge weight
         sscanf(line, "%lld %lld %zu", &from, &to, &ntokens);
 #ifdef DEBUG
-        ntokens = 1; 
+        ntokens = NTOKENS; 
 #endif
         weight = edge_data(ntokens);
 
@@ -160,7 +161,7 @@ public:
             // read edge weight
             sscanf(line, "%lld %lld %zu", &from, &to, &ntokens);
 #ifdef DEBUG
-            ntokens = 1; 
+            ntokens = NTOKENS; 
 #endif
             weight = edge_data(ntokens);
             // change word vertex vid
