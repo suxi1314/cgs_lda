@@ -1,12 +1,13 @@
 /**
- * @file cgs_lda.cc
- * @author  Shanshan Wang
+ * @file PageRankVertex.cc
+ * @author  Songjie Niu, Shimin Chen
  * @version 0.1
  *
  * @section LICENSE 
  * 
- * Copyright 2018 Shanshan Wang(wangshanshan171@ucas.ac.cn)
-
+ * Copyright 2016 Shimin Chen (chensm@ict.ac.cn) and
+ * Songjie Niu (niusongjie@ict.ac.cn)
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -21,8 +22,7 @@
  * 
  * @section DESCRIPTION
  * 
- * This file implements the Collapsed Gibbs Sampler (CGS) for the Latent 
- * Dirichlet Allocation (LDA) model using graphlite API.
+ * This file implements the PageRank algorithm using graphlite API.
  *
  */
 
@@ -32,53 +32,9 @@
 
 #include "GraphLite.h"
 /** change VERTEX_CLASS_NAME(name) definition to use a different class name */
-#define VERTEX_CLASS_NAME(name) cgs_lda##name
+#define VERTEX_CLASS_NAME(name) PageRankVertex##name
 
 #define EPS 1e-6
-/**
- * \brief the total number of topics to uses
- */
-size_t NTOPICS = 2; //50 can't run on single machine
-
-typedef long count_type;
-// factor_type is used to store the counts of tokens(word,doc pair) in each topic for words/docs.
-typedef std::vector< count_type > factor_type;
-
-typedef uint16_t topic_id_type;
-// We require a null topic to represent the topic assignment for tokens that have not yet been assigned.
-#define NULL_TOPIC (topic_id_type(-1))
-
-/**
-* The assignment type is used on each edge to store the
-* assignments of each token.  There can be several occurrences of the
-* same word in a given document and so a vector is used to store the
-* assignments of each occurrence.
-*/
-typedef std::vector< topic_id_type > assignment_type;
-
-/**
-* The vertex data represents each word and doc in the corpus and contains 
-* the counts of tokens(word,doc pair) in each topic. 
-*/
-struct vertex_data{
-    // The count of tokens in each topic.
-    factor_type factor;
-    // The count of out edges.
-    int64_t n_out;
-    vertex_data() : n_out(0), factor(NTOPICS) { }
-
-};
-
-/**
-* The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
-*/
-struct edge_data{
-    // The assignment of all tokens
-    assignment_type assignment;
-    edge_data(size_t ntokens = 0) : assignment(ntokens, NULL_TOPIC) { }
-};
-
-
 /** VERTEX_CLASS_NAME(InputFormatter) can be kept as is */
 class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
 public:
@@ -95,8 +51,7 @@ public:
         return m_total_edge;
     }
     int getVertexValueSize() {
-        // add vertex data type
-        m_n_value_size = sizeof(vertex_data);
+        m_n_value_size = sizeof(double);
         return m_n_value_size;
     }
     int getEdgeValueSize() {
@@ -113,7 +68,7 @@ public:
         unsigned long long to;
         double weight = 0;
         
-        vertex_data value = vertex_data();
+        double value = 1;
         int outdegree = 0;
         
         const char *line= getEdgeLine();
@@ -121,12 +76,7 @@ public:
         // Note: modify this if an edge weight is to be read
         //       modify the 'weight' variable
 
-        // read edge weight
-        sscanf(line, "%lld %lld %lf", &from, &to, &weight);
-
-        // change word vertex vid
-        to = m_total_vertex + to;
-
+        sscanf(line, "%lld %lld", &from, &to);
         addEdge(from, to, &weight);
 
         last_vertex = from;
@@ -137,12 +87,7 @@ public:
             // Note: modify this if an edge weight is to be read
             //       modify the 'weight' variable
 
-            // read edge weight
-            sscanf(line, "%lld %lld %lfs", &from, &to, &weight);
-
-            // change word vertex vid
-            to = m_total_vertex + to;
-
+            sscanf(line, "%lld %lld", &from, &to);
             if (last_vertex != from) {
                 addVertex(last_vertex, &value, outdegree);
                 last_vertex = from;
@@ -160,12 +105,12 @@ class VERTEX_CLASS_NAME(OutputFormatter): public OutputFormatter {
 public:
     void writeResult() {
         int64_t vid;
-        vertex_data value;
+        double value;
         char s[1024];
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld: %lld\n", (unsigned long long)vid, value.n_out);
+            int n = sprintf(s, "%lld: %f\n", (unsigned long long)vid, value);
             writeNextResLine(s, n);
         }
     }
@@ -197,17 +142,35 @@ public:
 };
 
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
-class VERTEX_CLASS_NAME(): public Vertex <vertex_data, double, double> {
+class VERTEX_CLASS_NAME(): public Vertex <double, double, double> {
 public:
     void compute(MessageIterator* pmsgs) {
-        // output number of outedge 
-        vertex_data val = vertex_data();
+        double val;
         if (getSuperstep() == 0) {
-            val.n_out = getOutEdgeIterator().size(); // get number of out edges.
+           val= 1.0;
         } else {
-            voteToHalt(); return;
+            if (getSuperstep() >= 2) {
+                // get the global value as of the end of the last superstep
+                // Note the '0', which is the aggregator ID.
+                double global_val = * (double *)getAggrGlobal(0);
+                if (global_val < EPS) {
+                    voteToHalt(); return;
+                }
+            }
+
+            double sum = 0;
+            for ( ; ! pmsgs->done(); pmsgs->next() ) {
+                sum += pmsgs->getValue();
+            }
+            val = 0.15 + 0.85 * sum;
+
+            double acc = fabs(getValue() - val);
+            // accumulate a value to m_local
+            accumulateAggr(0, &acc);
         }
         * mutableValue() = val;
+        const int64_t n = getOutEdgeIterator().size();
+        sendMessageToAllNeighbors(val / n);
     }
 };
 
@@ -217,7 +180,7 @@ public:
     VERTEX_CLASS_NAME(Aggregator)* aggregator;
 
 public:
-    // argv[0]: cgs_lda.so
+    // argv[0]: PageRankVertex.so
     // argv[1]: <input path>
     // argv[2]: <output path>
     void init(int argc, char* argv[]) {
@@ -264,4 +227,3 @@ extern "C" void destroy_graph(Graph* pobject) {
     delete ( VERTEX_CLASS_NAME(InputFormatter)* )(pobject->m_pin_formatter);
     delete ( VERTEX_CLASS_NAME(Graph)* )pobject;
 }
-
