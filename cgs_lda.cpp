@@ -28,7 +28,7 @@
 <<<<<<< HEAD
  *
 =======
- * 
+ *
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  *
  * \author Joseph Gonzalez, Diana Hu
@@ -200,7 +200,7 @@ struct top_words_type {
 <<<<<<< HEAD
   top_words_type() :
 =======
-  top_words_type() : 
+  top_words_type() :
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
     json_string("{\n" + json_header_string() + "\tvalues: [] \n }") { }
   inline std::string json_header_string() const {
@@ -340,7 +340,7 @@ bool graph_loader(graph_type& graph, const std::string& fname,
 <<<<<<< HEAD
     (line.begin(), line.end(),
 =======
-    (line.begin(), line.end(),       
+    (line.begin(), line.end(),
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
      //  Begin grammar
      (
@@ -354,8 +354,8 @@ bool graph_loader(graph_type& graph, const std::string& fname,
      ascii::space);
   if(!success) return false;
 =======
-     ascii::space); 
-  if(!success) return false;  
+     ascii::space);
+  if(!success) return false;
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
   // Threshold the count
   count = std::min(count, MAX_COUNT);
@@ -456,7 +456,7 @@ struct gather_type {
 <<<<<<< HEAD
  *
 =======
- * 
+ *
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  */
 class cgs_lda_vertex_program :
@@ -471,7 +471,7 @@ public:
 <<<<<<< HEAD
   static bool DISABLE_SAMPLING;
 =======
-  static bool DISABLE_SAMPLING; 
+  static bool DISABLE_SAMPLING;
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
 
   /** \brief gather on all edges */
@@ -523,7 +523,7 @@ public:
 <<<<<<< HEAD
     return (DISABLE_SAMPLING || (BURNIN > 0 && context.elapsed_seconds() > BURNIN))?
 =======
-    return (DISABLE_SAMPLING || (BURNIN > 0 && context.elapsed_seconds() > BURNIN))? 
+    return (DISABLE_SAMPLING || (BURNIN > 0 && context.elapsed_seconds() > BURNIN))?
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
       graphlab::NO_EDGES : graphlab::ALL_EDGES;
   }; // end of scatter edges
@@ -730,7 +730,7 @@ struct global_counts_aggregator {
 
 
 /**
- * Computing log_gamma can be a bit slow so this class precomptues 
+ * Computing log_gamma can be a bit slow so this class precomptues
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  * log gamma for a subset of values.
  */
@@ -782,9 +782,9 @@ log_gamma BETA_LGAMMA;
            \log\Gamma\left( W * \beta + \sum_{w} N_{wt}  \right) \right) \\
     & = T * \left( \log\Gamma(W * \beta) - W * \log\Gamma(\beta) \right) -
 =======
-    & \sum_{t} \left( \left(\sum_{w} \log\Gamma(N_{wt} + \beta)\right) - 
+    & \sum_{t} \left( \left(\sum_{w} \log\Gamma(N_{wt} + \beta)\right) -
            \log\Gamma\left( W * \beta + \sum_{w} N_{wt}  \right) \right) \\
-    & = T * \left( \log\Gamma(W * \beta) - W * \log\Gamma(\beta) \right) - 
+    & = T * \left( \log\Gamma(W * \beta) - W * \log\Gamma(\beta) \right) -
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
         \sum_{t} \log\Gamma\left( W * \beta + N_{t}  \right) + \\
     & \sum_{w} \sum_{t} \log\Gamma(N_{wt} + \beta)   \\
@@ -793,7 +793,7 @@ log_gamma BETA_LGAMMA;
 <<<<<<< HEAD
     & \sum_{d} \left( \left(\sum_{t}\log\Gamma(N_{td} + \alpha)\right) -
 =======
-    & \sum_{d} \left( \left(\sum_{t}\log\Gamma(N_{td} + \alpha)\right) -  
+    & \sum_{d} \left( \left(\sum_{t}\log\Gamma(N_{td} + \alpha)\right) -
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
         \log\Gamma\left( T * \alpha + \sum_{t} N_{td} \right) \right) \\
     \\
@@ -850,7 +850,7 @@ public:
 <<<<<<< HEAD
       const count_type value =
 =======
-      const count_type value = 
+      const count_type value =
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
         std::max(count_type(GLOBAL_TOPIC_COUNT[t]), count_type(0));
       denominator += lgamma(value + NWORDS * BETA);
@@ -883,7 +883,7 @@ struct signal_only {
 <<<<<<< HEAD
    */
 =======
-   */ 
+   */
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
   static graphlab::empty
   docs(icontext_type& context, const graph_type::vertex_type& vertex) {
@@ -893,7 +893,7 @@ struct signal_only {
 <<<<<<< HEAD
 
 =======
- 
+
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  /**
   * \brief Signal only the word vertices and skip the document
@@ -916,7 +916,7 @@ struct signal_only {
 <<<<<<< HEAD
  *
 =======
- * 
+ *
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  * The graph can be in either json form constructed using the graph
  * builder tools or in raw text form.  The raw text format contains a
@@ -936,7 +936,7 @@ struct signal_only {
 <<<<<<< HEAD
  *
 =======
- * 
+ *
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  * implies that document zero contains word zero twice, word 4 once,
  * and word two three times.
@@ -955,7 +955,7 @@ struct signal_only {
 <<<<<<< HEAD
  *
 =======
- * 
+ *
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  * \param [in] corpus_dir The directory or file containing the graph
  * data.  The corpus directory can reside on hdfs in which case the
@@ -971,7 +971,7 @@ bool load_and_initialize_graph(graphlab::distributed_control& dc,
 <<<<<<< HEAD
                                const std::string& format
 =======
-                               const std::string& format			       
+                               const std::string& format
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
 			       ) {
   dc.cout() << "Loading graph." << std::endl;
@@ -1041,7 +1041,7 @@ bool load_and_initialize_graph(graphlab::distributed_control& dc,
 <<<<<<< HEAD
  *
 =======
- * 
+ *
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
  */
 bool load_dictionary(const std::string& fname)  {
@@ -1117,7 +1117,7 @@ struct count_saver {
 <<<<<<< HEAD
     for(size_t i = 0; i < factor.size(); ++i) {
 =======
-    for(size_t i = 0; i < factor.size(); ++i) { 
+    for(size_t i = 0; i < factor.size(); ++i) {
 >>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
       strm << factor[i];
       if(i+1 < factor.size()) strm << '\t';
@@ -1143,7 +1143,7 @@ struct count_saver {
  */
 typedef graphlab::omni_engine<cgs_lda_vertex_program> engine_type;
 =======
- * synchronous and asynchronous computation. 
+ * synchronous and asynchronous computation.
  */
 typedef graphlab::omni_engine<cgs_lda_vertex_program> engine_type;
 
@@ -1193,10 +1193,10 @@ int main(int argc, char** argv) {
   std::string word_dir;
   std::string exec_type = "asynchronous";
   std::string format = "matrix";
-  
+
   clopts.attach_option("dictionary", dictionary_fname,
                        "The file containing the list of unique words");
-  clopts.attach_option("engine", exec_type, 
+  clopts.attach_option("engine", exec_type,
                        "The engine type synchronous or asynchronous");
   clopts.attach_option("corpus", corpus_dir,
                        "The directory or file containing the corpus data.");
@@ -1217,7 +1217,7 @@ int main(int argc, char** argv) {
                        "The maximum number of occurences of a word in a document.");
   clopts.attach_option("format", format,
                        "Formats: matrix,json,json-gzip");
-  clopts.attach_option("burnin", BURNIN, 
+  clopts.attach_option("burnin", BURNIN,
                        "The time in second to run until a sample is collected. "
                        "If less than zero the sampler runs indefinitely.");
   clopts.attach_option("doc_dir", doc_dir,
@@ -1257,17 +1257,17 @@ int main(int argc, char** argv) {
   }
 
   if(ALPHA <= 0) {
-    logstream(LOG_ERROR) 
+    logstream(LOG_ERROR)
       << "Alpha must be positive (alpha=" << ALPHA << ")!"  << std::endl;
     return EXIT_FAILURE;
   }
 
   if(BETA <= 0) {
-    logstream(LOG_ERROR) 
+    logstream(LOG_ERROR)
       << "Beta must be positive (beta=" << BETA << ")!"  << std::endl;
     return EXIT_FAILURE;
   }
-   
+
   /// Initialize the log_gamma precached calculations.
   ALPHA_LGAMMA.init(ALPHA, 100000);
   BETA_LGAMMA.init(BETA, 1000000);
@@ -1276,7 +1276,7 @@ int main(int argc, char** argv) {
   ///! load the graph
   graph_type graph(dc, clopts);
   {
-    const bool success = 
+    const bool success =
       load_and_initialize_graph(dc, graph, corpus_dir, format);
     if(!success) {
       logstream(LOG_ERROR) << "Error loading graph." << std::endl;
@@ -1303,18 +1303,18 @@ int main(int argc, char** argv) {
   { // Add the Global counts aggregator
     const bool success =
       engine.add_vertex_aggregator<factor_type>
-      ("global_counts", 
-       global_counts_aggregator::map, 
+      ("global_counts",
+       global_counts_aggregator::map,
        global_counts_aggregator::finalize) &&
       engine.aggregate_periodic("global_counts", 5);
     ASSERT_TRUE(success);
   }
-  
+
   { // Add the likelihood aggregator
     const bool success =
       engine.add_vertex_aggregator<likelihood_aggregator>
-      ("likelihood", 
-       likelihood_aggregator::map, 
+      ("likelihood",
+       likelihood_aggregator::map,
        likelihood_aggregator::finalize) &&
       engine.aggregate_periodic("likelihood", LIK_INTERVAL);
     ASSERT_TRUE(success);
@@ -1332,7 +1332,7 @@ int main(int argc, char** argv) {
   cgs_lda_vertex_program::DISABLE_SAMPLING = true;
   engine.signal_all();
   engine.start();
-  
+
   const double runtime = timer.current_time();
   dc.cout()
     << "----------------------------------------------------------" << std::endl
@@ -1341,9 +1341,9 @@ int main(int argc, char** argv) {
     << "Updates executed: " << engine.num_updates() << std::endl
     << "Update Rate (updates/second): "
     << engine.num_updates() / runtime << std::endl;
-  
-  
-  
+
+
+
   if(!word_dir.empty()) {
     // save word topic counts
     const bool gzip_output = false;
@@ -1352,11 +1352,11 @@ int main(int argc, char** argv) {
     const size_t threads_per_machine = 2;
     const bool save_words = true;
     graph.save(word_dir, count_saver(save_words),
-               gzip_output, save_vertices, 
+               gzip_output, save_vertices,
                save_edges, threads_per_machine);
   }
 
-  
+
   if(!doc_dir.empty()) {
     // save doc topic counts
     const bool gzip_output = false;
@@ -1365,7 +1365,7 @@ int main(int argc, char** argv) {
     const size_t threads_per_machine = 2;
     const bool save_words = false;
     graph.save(doc_dir, count_saver(save_words),
-               gzip_output, save_vertices, 
+               gzip_output, save_vertices,
                save_edges, threads_per_machine);
 
   }
