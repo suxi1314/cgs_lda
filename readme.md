@@ -12,3 +12,12 @@ Graphlite: https://github.com/schencoding/GraphLite
 
 ## Dataset
 Bag of Words Data Set http://archive.ics.uci.edu/ml/datasets/Bag+of+Words
+
+## Dependencies
+1. GraphLite-0.20
+
+https://github.com/schencoding/GraphLite/tree/master/GraphLite-0.20
+
+2. libboost-dev-1.54.0
+
+sudo apt-get install libboost-dev=1.54.0.1ubuntu1
