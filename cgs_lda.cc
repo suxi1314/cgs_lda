@@ -3,8 +3,8 @@
  * @author  Shanshan Wang
  * @version 0.1
  *
- * @section LICENSE 
- * 
+ * @section LICENSE
+ *
  * Copyright 2018 Shanshan Wang(wangshanshan171@ucas.ac.cn)
 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
+ *
  * @section DESCRIPTION
- * 
- * This file implements the Collapsed Gibbs Sampler (CGS) for the Latent 
+ *
+ * This file implements the Collapsed Gibbs Sampler (CGS) for the Latent
  * Dirichlet Allocation (LDA) model using graphlite API.
  *
  */
@@ -51,7 +51,7 @@ size_t NTOKEN = 2;
 #endif
 
 #ifdef RELEASE // run on server
-size_t NTOPICS = 50; 
+size_t NTOPICS = 50;
 #endif
 
 typedef long count_type;
@@ -71,8 +71,8 @@ typedef uint16_t topic_id_type;
 typedef std::vector< topic_id_type > assignment_type;
 
 /**
-* The vertex data represents each word and doc in the corpus and contains 
-* the counts of tokens(word,doc pair) in each topic. 
+* The vertex data represents each word and doc in the corpus and contains
+* the counts of tokens(word,doc pair) in each topic.
 */
 struct vertex_data{
     // The count of tokens in each topic.
@@ -129,7 +129,7 @@ public:
 
         vertex_data value = vertex_data();
         int outdegree = 0;
-        
+
 
         const char *line= getEdgeLine();
 
@@ -228,10 +228,10 @@ public:
 class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, double> {
 public:
     void compute(MessageIterator* pmsgs) {
-        // output number of outedge 
+        // output number of outedge
         vertex_data val = vertex_data();
         if (getSuperstep() == 0) {
-            size_t ntokens = collect();
+            size_t ntokens = count_tokens();
         } else {
             voteToHalt(); return;
         }
@@ -245,9 +245,9 @@ public:
     int is_word(){
         return (getOutEdgeIterator().size())? 0:1;
     }
-    // collect assignment from edges
-    size_t collect(){
-        // count number of tokens on out edges 
+    // count tokens from edges
+    size_t count_tokens(){
+        // count number of tokens on edges 
         size_t ntokens;
         int64_t vid = getVertexId();
         OutEdgeIterator outEdges = getOutEdgeIterator();
@@ -329,5 +329,3 @@ extern "C" void destroy_graph(Graph* pobject) {
     delete ( VERTEX_CLASS_NAME(InputFormatter)* )(pobject->m_pin_formatter);
     delete ( VERTEX_CLASS_NAME(Graph)* )pobject;
 }
-
-
