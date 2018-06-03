@@ -47,6 +47,7 @@
 #ifdef DEBUG // run on vm
 size_t NTOPICS = 2;
 size_t NTOKEN = 2;
+#define ZERO_TOPIC (topic_id_type(0))
 #endif
 
 #ifdef RELEASE // run on server
@@ -230,7 +231,7 @@ public:
         // output number of outedge 
         vertex_data val = vertex_data();
         if (getSuperstep() == 0) {
-            collect();
+            size_t ntokens = collect();
         } else {
             voteToHalt(); return;
         }
@@ -245,7 +246,7 @@ public:
         return (getOutEdgeIterator().size())? 0:1;
     }
     // collect assignment from edge
-    int collect(){
+    size_t collect(){
         // count number of tokens on out edges 
         size_t ntokens;
         int64_t vid = getVertexId();
@@ -254,7 +255,24 @@ public:
             ntokens += (outEdges.getValue()).assignment.size();
         }
         printf("vid=%lld, ntokens=%zu\n", vid, ntokens);
+        return ntokens;
     }
+/*
+    void assignment(){
+        int64_t vid = getVertexId();
+        OutEdgeIterator outEdges = getOutEdgeIterator();
+        for ( ; ! outEdges.done(); outEdges.next() ) {
+            char* p = outEdges.current();
+            topic_id_type topic = NULL_TOPIC;
+#ifdef DEBUG
+            topic = ZERO_TOPIC;
+#endif
+            *( (edge_data *)( (Edge *)p )->weight )->assignment[0] = ZERO_TOPIC;
+
+        }
+        return ;
+    }
+*/
 };
 
 /** VERTEX_CLASS_NAME(Graph): set the running configuration here */
@@ -310,4 +328,5 @@ extern "C" void destroy_graph(Graph* pobject) {
     delete ( VERTEX_CLASS_NAME(InputFormatter)* )(pobject->m_pin_formatter);
     delete ( VERTEX_CLASS_NAME(Graph)* )pobject;
 }
+
 
