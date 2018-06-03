@@ -231,7 +231,7 @@ public:
         // output number of outedge 
         vertex_data val = vertex_data();
         if (getSuperstep() == 0) {
-            size_t ntokens = collect();
+            size_t ntokens = count_tokens();
         } else {
             voteToHalt(); return;
         }
@@ -245,8 +245,8 @@ public:
     int is_word(){
         return (getOutEdgeIterator().size())? 0:1;
     }
-    // collect assignment from edge
-    size_t collect(){
+    // count tokens from edges
+    size_t count_tokens(){
         // count number of tokens on out edges 
         size_t ntokens;
         int64_t vid = getVertexId();
@@ -257,7 +257,7 @@ public:
         printf("vid=%lld, ntokens=%zu\n", vid, ntokens);
         return ntokens;
     }
-/*
+
     void assignment(){
         int64_t vid = getVertexId();
         OutEdgeIterator outEdges = getOutEdgeIterator();
@@ -267,12 +267,13 @@ public:
 #ifdef DEBUG
             topic = ZERO_TOPIC;
 #endif
-            *( (edge_data *)( (Edge *)p )->weight )->assignment[0] = ZERO_TOPIC;
-
+            assignment_type *assignment;
+            * assignment = ((assignment_type)((( edge_data *)( (Edge *)p )->weight) -> assignment));
+            size_t assignment_size = assignment->size();
+            assignment->assign(assignment_size,ZERO_TOPIC);
         }
         return ;
     }
-*/
 };
 
 /** VERTEX_CLASS_NAME(Graph): set the running configuration here */
