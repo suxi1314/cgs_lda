@@ -231,7 +231,7 @@ public:
         // output number of outedge 
         vertex_data val = vertex_data();
         if (getSuperstep() == 0) {
-            size_t ntokens = count_tokens();
+            size_t ntokens = collect();
         } else {
             voteToHalt(); return;
         }
@@ -245,8 +245,8 @@ public:
     int is_word(){
         return (getOutEdgeIterator().size())? 0:1;
     }
-    // count tokens from edges
-    size_t count_tokens(){
+    // collect assignment from edges
+    size_t collect(){
         // count number of tokens on out edges 
         size_t ntokens;
         int64_t vid = getVertexId();
