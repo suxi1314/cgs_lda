@@ -3,8 +3,8 @@
  * @author  Shanshan Wang
  * @version 0.1
  *
- * @section LICENSE
- *
+ * @section LICENSE 
+ * 
  * Copyright 2018 Shanshan Wang(wangshanshan171@ucas.ac.cn)
 
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,10 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
+ * 
  * @section DESCRIPTION
- *
- * This file implements the Collapsed Gibbs Sampler (CGS) for the Latent
+ * 
+ * This file implements the Collapsed Gibbs Sampler (CGS) for the Latent 
  * Dirichlet Allocation (LDA) model using graphlite API.
  *
  */
@@ -29,6 +29,10 @@
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
+#include <vector>
+#include <boost/foreach.hpp>
+#include <boost/numeric/ublas/vector.hpp>
+#include <assert.h>
 
 #include "GraphLite.h"
 
@@ -45,14 +49,12 @@
  */
 
 #ifdef DEBUG // run on vm
-size_t NTOPICS = 2;
-size_t NTOKEN = 2;
 #define ZERO_TOPIC (topic_id_type(0))
 #endif
 
-#ifdef RELEASE // run on server
-size_t NTOPICS = 50;
-#endif
+typedef unsigned long long vid_type;
+
+size_t NTOPICS = 2; 
 
 typedef long count_type;
 // factor_type is used to store the counts of tokens(word,doc pair) in each topic for words/docs.
@@ -70,14 +72,20 @@ typedef uint16_t topic_id_type;
 */
 typedef std::vector< topic_id_type > assignment_type;
 
+#define IS_WORD -1
+#define IS_DOC 1
+#define IS_NULL 0
+
 /**
-* The vertex data represents each word and doc in the corpus and contains
-* the counts of tokens(word,doc pair) in each topic.
+* The vertex data represents each word and doc in the corpus and contains 
+* the counts of tokens(word,doc pair) in each topic. 
 */
 struct vertex_data{
     // The count of tokens in each topic.
     factor_type factor;
-    vertex_data() : factor(NTOPICS) { }
+    int64_t flag;
+
+    vertex_data(int64_t f = IS_NULL) :flag(f), factor(NTOPICS, 0) { }
 
 };
 
@@ -120,16 +128,19 @@ public:
         return m_m_value_size;
     }
     void loadGraph() {
-        unsigned long long last_vertex;
-        unsigned long long from;
-        unsigned long long to;
+        vid_type last_vertex;
+        vid_type from;
+        vid_type to;
 
         edge_data weight = 0;
         size_t ntoken = 0;
 
-        vertex_data value = vertex_data();
-        int outdegree = 0;
+        vertex_data doc_value = vertex_data(IS_DOC);
 
+        vertex_data word_value = vertex_data(IS_WORD);
+
+        int outdegree = 0;
+        
 
         const char *line= getEdgeLine();
 
@@ -137,19 +148,14 @@ public:
         //       modify the 'weight' variable
 
         // read edge weight
-        sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
-#ifdef DEBUG
-        weight = edge_data(NTOKEN);
-#endif
+        //sscanf(line, "%lld %lld %zu", &from, &to, &ntoken
+        //weight = edge_data(ntoken);
 
-#ifdef RELEASE
-        weight = edge_data(ntoken);
-#endif
+        sscanf(line, "%lld %lld", &from, &to);
+        weight = edge_data(2);
 
-        // change word vertex vid
-        to = m_total_vertex + to;
-
-        addEdge(from, to, &ntoken);
+        addEdge(from, to, &weight);
+        addVertex(to, &word_value, 0);
 
         last_vertex = from;
         ++outdegree;
@@ -160,19 +166,15 @@ public:
             //       modify the 'weight' variable
 
             // read edge weight
-            sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
-#ifdef DEBUG
-            weight = edge_data(NTOKEN);
-#endif
+            //sscanf(line, "%lld %lld %zu", &from, &to, &ntoken
+            //weight = edge_data(ntoken);
 
-#ifdef RELEASE
-            weight = edge_data(ntoken);
-#endif
-            // change word vertex vid
-            to = m_total_vertex + to;
+            sscanf(line, "%lld %lld", &from, &to);
+            weight = edge_data(2);
+            addVertex(to, &word_value, 0);
 
             if (last_vertex != from) {
-                addVertex(last_vertex, &value, outdegree);
+                addVertex(last_vertex, &doc_value, outdegree);
                 last_vertex = from;
                 outdegree = 1;
             } else {
@@ -180,10 +182,11 @@ public:
             }
             addEdge(from, to, &weight);
         }
-        addVertex(last_vertex, &value, outdegree);
+        addVertex(last_vertex, &doc_value, outdegree);
     }
 };
-/** VERTEX_CLASS_NAME(OutputFormatter): this is where the output is generated */
+/** VERTEX_CLASS_NAME(OutputFormatter): t
+his is where the output is generated */
 class VERTEX_CLASS_NAME(OutputFormatter): public OutputFormatter {
 public:
     void writeResult() {
@@ -193,7 +196,7 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld: \n", (unsigned long long)vid);
+            int n = sprintf(s, "%lld:%lld \n", vid, value.flag);
             writeNextResLine(s, n);
         }
     }
@@ -228,34 +231,52 @@ public:
 class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, double> {
 public:
     void compute(MessageIterator* pmsgs) {
-        // output number of outedge
-        vertex_data val = vertex_data();
+        // output number of outedge 
+        //vertex_data val = vertex_data();
+        //printf("%lld\n", getVertexId());
         if (getSuperstep() == 0) {
-            size_t ntokens = count_tokens();
+            //size_t ntokens = count_tokens();
+            // assignment();
+            // val.factor += gather();
         } else {
             voteToHalt(); return;
         }
-        * mutableValue() = val;
+        //val.n = 5; //getOutEdgeIterator().size();
+        //* mutableValue() = val;
     }
     // judge if a vertex is doc
     int is_doc(){
-        return (getOutEdgeIterator().size())? 1:0;
+        return (getValue().flag==IS_DOC)? 1:0;
     }
     // judge if a vertex is word
     int is_word(){
-        return (getOutEdgeIterator().size())? 0:1;
+        return (getValue().flag==IS_WORD)? 0:1;
     }
     // count tokens from edges
     size_t count_tokens(){
         // count number of tokens on edges 
-        size_t ntokens;
-        int64_t vid = getVertexId();
-        OutEdgeIterator outEdges = getOutEdgeIterator();
-        for ( ; ! outEdges.done(); outEdges.next() ) {
-            ntokens += (outEdges.getValue()).assignment.size();
-        }
-        printf("vid=%lld, ntokens=%zu\n", vid, ntokens);
+        size_t ntokens = 0;
+        //int64_t vid = getVertexId();
+        //OutEdgeIterator out_edge_it = getOutEdgeIterator();
+        //for ( ; ! out_edge_it.done(); out_edge_it.next() ) {
+            //ntokens += (out_edge_it.getValue()).assignment.size();
+        //}
+        //printf("vid=%lld, ntokens=%zu\n", vid, ntokens);
         return ntokens;
+    }
+
+    // gather current assignment from edges.
+    factor_type gather(){
+        factor_type rt = factor_type(NTOPICS, 0);
+        int64_t vid = getVertexId();
+        OutEdgeIterator out_edge_it = getOutEdgeIterator();
+        for ( ; ! out_edge_it.done(); out_edge_it.next() ) {
+            const assignment_type& assignment= (out_edge_it.getValue()).assignment;
+            BOOST_FOREACH(topic_id_type asg, assignment) {
+                if(asg != NULL_TOPIC) ++rt[asg];
+            }
+        }
+        return rt;
     }
 
     void assignment(){
@@ -329,3 +350,5 @@ extern "C" void destroy_graph(Graph* pobject) {
     delete ( VERTEX_CLASS_NAME(InputFormatter)* )(pobject->m_pin_formatter);
     delete ( VERTEX_CLASS_NAME(Graph)* )pobject;
 }
+
+
