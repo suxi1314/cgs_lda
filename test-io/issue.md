@@ -28,3 +28,6 @@ doc会被读入为from， word会被读成to
 from节点的vertex_data.flag = IS_DOC, to节点的vertex_data.flag = IS_WORD
 
 本目录下有相应的测试数据和输出结果。
+
+代码见 commit:
+ https://github.com/suxi1314/cgs_lda/tree/456d42d7aa06b4b125060b15e373770b7cd3c72f
