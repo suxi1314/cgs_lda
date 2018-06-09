@@ -98,13 +98,16 @@ struct edge_data{
     edge_data(size_t ntoken = 0) : assignment(ntoken, NULL_TOPIC) { }
 };
 
+unsigned long long total_doc;
+unsigned long long total_word;
+
 
 /** VERTEX_CLASS_NAME(InputFormatter) can be kept as is */
 class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
 public:
     int64_t getVertexNum() {
         unsigned long long n;
-        sscanf(m_ptotal_vertex_line, "%lld", &n);
+        sscanf(m_ptotal_vertex_line, "%lld %lld %lld", &n, &total_doc, &total_word);
         m_total_vertex= n;
         return m_total_vertex;
     }
@@ -148,14 +151,10 @@ public:
         //       modify the 'weight' variable
 
         // read edge weight
-        //sscanf(line, "%lld %lld %zu", &from, &to, &ntoken
-        //weight = edge_data(ntoken);
-
-        sscanf(line, "%lld %lld", &from, &to);
-        weight = edge_data(2);
+        sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
+        weight = edge_data(ntoken);
 
         addEdge(from, to, &weight);
-        addVertex(to, &word_value, 0);
 
         last_vertex = from;
         ++outdegree;
@@ -166,15 +165,12 @@ public:
             //       modify the 'weight' variable
 
             // read edge weight
-            //sscanf(line, "%lld %lld %zu", &from, &to, &ntoken
-            //weight = edge_data(ntoken);
-
-            sscanf(line, "%lld %lld", &from, &to);
-            weight = edge_data(2);
-            addVertex(to, &word_value, 0);
+            sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
+            weight = edge_data(ntoken);
 
             if (last_vertex != from) {
-                addVertex(last_vertex, &doc_value, outdegree);
+                if(last_vertex < total_doc) addVertex(last_vertex, &doc_value, outdegree);
+                else addVertex(last_vertex, &word_value, outdegree);
                 last_vertex = from;
                 outdegree = 1;
             } else {
@@ -182,7 +178,8 @@ public:
             }
             addEdge(from, to, &weight);
         }
-        addVertex(last_vertex, &doc_value, outdegree);
+        if(last_vertex < total_doc) addVertex(last_vertex, &doc_value, outdegree);
+        else addVertex(last_vertex, &word_value, outdegree);
     }
 };
 /** VERTEX_CLASS_NAME(OutputFormatter): t
