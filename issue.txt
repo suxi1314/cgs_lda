@@ -11,3 +11,6 @@ if vertex is_word
 有向图不可行
 
 #如果是有向的无向图
+读取有向的无向图，需要在数据集(test_graph_4w)中添加doc和word的个数，
+
+并在load_graph的时候读出来， 利用doc和word的个数判断是何种节点，并标记flag
