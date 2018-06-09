@@ -1,0 +1,13 @@
+#如果是有向图
+## 第0第0个superstep或者load_graph的时候赋topic初值给edge
+## odd superstep
+if vertex is_doc
+    就gather edge上的topic, add to vector
+    send edge上的topic给word
+## even superstep
+if vertex is_word
+    recv edge topic , add to vector
+    send vertex data to word？不可行
+有向图不可行
+
+#如果是有向的无向图

@@ -25,11 +25,7 @@
  * Collapsed Gibbs Sampler (CGS) for the Latent Dirichlet Allocation
  * (LDA) model.
  *
-<<<<<<< HEAD
- *
-=======
- *
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ * 
  *
  * \author Joseph Gonzalez, Diana Hu
  */
@@ -197,11 +193,7 @@ float BURNIN = -1;
 struct top_words_type {
   graphlab::mutex lock;
   std::string json_string;
-<<<<<<< HEAD
-  top_words_type() :
-=======
-  top_words_type() :
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+  top_words_type() : 
     json_string("{\n" + json_header_string() + "\tvalues: [] \n }") { }
   inline std::string json_header_string() const {
     return
@@ -337,11 +329,7 @@ bool graph_loader(graph_type& graph, const std::string& fname,
   graphlab::vertex_id_type doc_id(-1), word_id(-1);
   size_t count = 0;
   const bool success = qi::phrase_parse
-<<<<<<< HEAD
-    (line.begin(), line.end(),
-=======
-    (line.begin(), line.end(),
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+    (line.begin(), line.end(),       
      //  Begin grammar
      (
       qi::ulong_[phoenix::ref(doc_id) = qi::_1] >> -qi::char_(',') >>
@@ -350,13 +338,8 @@ bool graph_loader(graph_type& graph, const std::string& fname,
       )
      ,
      //  End grammar
-<<<<<<< HEAD
-     ascii::space);
-  if(!success) return false;
-=======
-     ascii::space);
-  if(!success) return false;
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+     ascii::space); 
+  if(!success) return false;  
   // Threshold the count
   count = std::min(count, MAX_COUNT);
   // since this is a bipartite graph I need a method to number the
@@ -453,11 +436,7 @@ struct gather_type {
  * \brief The collapsed Gibbs sampler vertex program updates the topic
  * counts for the center vertex and then draws new topic assignments
  * for each edge durring the scatter phase.
-<<<<<<< HEAD
- *
-=======
- *
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ * 
  */
 class cgs_lda_vertex_program :
   public graphlab::ivertex_program<graph_type, gather_type>,
@@ -468,11 +447,7 @@ public:
    * \brief At termination we want to disable sampling to allow the
    * correct final counts to be computed.
    */
-<<<<<<< HEAD
-  static bool DISABLE_SAMPLING;
-=======
-  static bool DISABLE_SAMPLING;
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+  static bool DISABLE_SAMPLING; 
 
   /** \brief gather on all edges */
   edge_dir_type gather_edges(icontext_type& context,
@@ -520,11 +495,7 @@ public:
    */
   edge_dir_type scatter_edges(icontext_type& context,
                               const vertex_type& vertex) const {
-<<<<<<< HEAD
-    return (DISABLE_SAMPLING || (BURNIN > 0 && context.elapsed_seconds() > BURNIN))?
-=======
-    return (DISABLE_SAMPLING || (BURNIN > 0 && context.elapsed_seconds() > BURNIN))?
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+    return (DISABLE_SAMPLING || (BURNIN > 0 && context.elapsed_seconds() > BURNIN))? 
       graphlab::NO_EDGES : graphlab::ALL_EDGES;
   }; // end of scatter edges
 
@@ -648,10 +619,6 @@ public:
     if(is_word(vertex)) {
       const graphlab::vertex_id_type wordid = vertex.id();
       ret_value.top_words.resize(vdata.factor.size());
-<<<<<<< HEAD
-
-=======
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
       for(size_t i = 0; i < vdata.factor.size(); ++i) {
         const cw_pair_type pair(vdata.factor[i], wordid);
         ret_value.top_words[i].insert(pair);
@@ -719,19 +686,11 @@ struct global_counts_aggregator {
     }
     context.cout() << "Total Tokens: " << sum << std::endl;
   } // end of finalize
-<<<<<<< HEAD
-}; //+ end of global_counts_aggregator struct
-
-
-/**
- * Computing log_gamma can be a bit slow so this class precomptues
-=======
 }; // end of global_counts_aggregator struct
 
 
 /**
- * Computing log_gamma can be a bit slow so this class precomptues
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ * Computing log_gamma can be a bit slow so this class precomptues 
  * log gamma for a subset of values.
  */
 class log_gamma {
@@ -777,24 +736,14 @@ log_gamma BETA_LGAMMA;
  * Latex formulation:
  *
     \mathcal{L}( w | z) & = T * \left( \log\Gamma(W * \beta) - W * \log\Gamma(\beta) \right) + \\
-<<<<<<< HEAD
-    & \sum_{t} \left( \left(\sum_{w} \log\Gamma(N_{wt} + \beta)\right) -
+    & \sum_{t} \left( \left(\sum_{w} \log\Gamma(N_{wt} + \beta)\right) - 
            \log\Gamma\left( W * \beta + \sum_{w} N_{wt}  \right) \right) \\
-    & = T * \left( \log\Gamma(W * \beta) - W * \log\Gamma(\beta) \right) -
-=======
-    & \sum_{t} \left( \left(\sum_{w} \log\Gamma(N_{wt} + \beta)\right) -
-           \log\Gamma\left( W * \beta + \sum_{w} N_{wt}  \right) \right) \\
-    & = T * \left( \log\Gamma(W * \beta) - W * \log\Gamma(\beta) \right) -
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+    & = T * \left( \log\Gamma(W * \beta) - W * \log\Gamma(\beta) \right) - 
         \sum_{t} \log\Gamma\left( W * \beta + N_{t}  \right) + \\
     & \sum_{w} \sum_{t} \log\Gamma(N_{wt} + \beta)   \\
     \\
     \mathcal{L}(z) & = D * \left(\log\Gamma(T * \alpha) - T * \log\Gamma(\alpha) \right) + \\
-<<<<<<< HEAD
-    & \sum_{d} \left( \left(\sum_{t}\log\Gamma(N_{td} + \alpha)\right) -
-=======
-    & \sum_{d} \left( \left(\sum_{t}\log\Gamma(N_{td} + \alpha)\right) -
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+    & \sum_{d} \left( \left(\sum_{t}\log\Gamma(N_{td} + \alpha)\right) -  
         \log\Gamma\left( T * \alpha + \sum_{t} N_{td} \right) \right) \\
     \\
     \mathcal{L}(w,z) & = \mathcal{L}(w | z) + \mathcal{L}(z)
@@ -833,11 +782,7 @@ public:
         ret.lik_topics += ALPHA_LGAMMA(value);
         ntokens_in_doc += value;
       }
-<<<<<<< HEAD
-      ret.lik_topics+ -= lgamma(ntokens_in_doc + NTOPICS * ALPHA);
-=======
       ret.lik_topics -= lgamma(ntokens_in_doc + NTOPICS * ALPHA);
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
     }
     return ret;
   } // end of map function
@@ -847,11 +792,7 @@ public:
     // Address the global sum terms
     double denominator = 0;
     for(size_t t = 0; t < NTOPICS; ++t) {
-<<<<<<< HEAD
-      const count_type value =
-=======
-      const count_type value =
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+      const count_type value = 
         std::max(count_type(GLOBAL_TOPIC_COUNT[t]), count_type(0));
       denominator += lgamma(value + NWORDS * BETA);
     } // end of for loop
@@ -880,21 +821,13 @@ struct signal_only {
   /**
    * \brief Signal only the document vertices and skip the word
    * vertices.
-<<<<<<< HEAD
-   */
-=======
-   */
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+   */ 
   static graphlab::empty
   docs(icontext_type& context, const graph_type::vertex_type& vertex) {
     if(is_doc(vertex)) context.signal(vertex);
     return graphlab::empty();
   } // end of signal_docs
-<<<<<<< HEAD
-
-=======
-
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ 
  /**
   * \brief Signal only the word vertices and skip the document
   * vertices.
@@ -913,11 +846,7 @@ struct signal_only {
 /**
  * \brief This function is used to load and then initialize the data
  * graph (corpus) from a folder or file.
-<<<<<<< HEAD
- *
-=======
- *
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ * 
  * The graph can be in either json form constructed using the graph
  * builder tools or in raw text form.  The raw text format contains a
  * token on each line of each file in the format:
@@ -933,11 +862,7 @@ struct signal_only {
     0    4     1
     0    2     3
  \endverbatim
-<<<<<<< HEAD
- *
-=======
- *
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ * 
  * implies that document zero contains word zero twice, word 4 once,
  * and word two three times.
  *
@@ -952,11 +877,7 @@ struct signal_only {
  * between machines.
  *
  * \param [in,out] graph The graph object that is initialized.
-<<<<<<< HEAD
- *
-=======
- *
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ * 
  * \param [in] corpus_dir The directory or file containing the graph
  * data.  The corpus directory can reside on hdfs in which case the
  * path should begin with "hdfs://namenode".  In addition the file(s)
@@ -968,11 +889,7 @@ struct signal_only {
 bool load_and_initialize_graph(graphlab::distributed_control& dc,
                                graph_type& graph,
                                const std::string& corpus_dir,
-<<<<<<< HEAD
-                               const std::string& format
-=======
-                               const std::string& format
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+                               const std::string& format			       
 			       ) {
   dc.cout() << "Loading graph." << std::endl;
   graphlab::timer timer; timer.start();
@@ -985,10 +902,6 @@ bool load_and_initialize_graph(graphlab::distributed_control& dc,
   //     graph.load_json(corpus_dir, false, eparser, vparser);
   // } else if(format=="json-gzip"){
   //     dc.cout() <<"json gzip format" << std::endl;
-<<<<<<< HEAD
-
-=======
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
   //     graph.load_json(corpus_dir, true, eparser, vparser);
   }else{
       dc.cout() << "Non supported format. See --help" << std::endl;
@@ -1038,11 +951,7 @@ bool load_and_initialize_graph(graphlab::distributed_control& dc,
  * \param [in] fname the file containing the dictionary data.  The
  * data can be located on HDFS and can also be gzipped (must end in
  * ".gz").
-<<<<<<< HEAD
- *
-=======
- *
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+ * 
  */
 bool load_dictionary(const std::string& fname)  {
   // std::cout << "staring load on: "
@@ -1114,11 +1023,7 @@ struct count_saver {
       strm << vid << '\t';
     }
     const factor_type& factor = vertex.data().factor;
-<<<<<<< HEAD
-    for(size_t i = 0; i < factor.size(); ++i) {
-=======
-    for(size_t i = 0; i < factor.size(); ++i) {
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6
+    for(size_t i = 0; i < factor.size(); ++i) { 
       strm << factor[i];
       if(i+1 < factor.size()) strm << '\t';
     }
@@ -1138,12 +1043,7 @@ struct count_saver {
 
 /**
  * \brief The omni engine type is used to allow switching between
-<<<<<<< HEAD
- * synchronous and asynchronous computation.
- */
-typedef graphlab::omni_engine<cgs_lda_vertex_program> engine_type;
-=======
- * synchronous and asynchronous computation.
+ * synchronous and asynchronous computation. 
  */
 typedef graphlab::omni_engine<cgs_lda_vertex_program> engine_type;
 
@@ -1193,10 +1093,10 @@ int main(int argc, char** argv) {
   std::string word_dir;
   std::string exec_type = "asynchronous";
   std::string format = "matrix";
-
+  
   clopts.attach_option("dictionary", dictionary_fname,
                        "The file containing the list of unique words");
-  clopts.attach_option("engine", exec_type,
+  clopts.attach_option("engine", exec_type, 
                        "The engine type synchronous or asynchronous");
   clopts.attach_option("corpus", corpus_dir,
                        "The directory or file containing the corpus data.");
@@ -1217,7 +1117,7 @@ int main(int argc, char** argv) {
                        "The maximum number of occurences of a word in a document.");
   clopts.attach_option("format", format,
                        "Formats: matrix,json,json-gzip");
-  clopts.attach_option("burnin", BURNIN,
+  clopts.attach_option("burnin", BURNIN, 
                        "The time in second to run until a sample is collected. "
                        "If less than zero the sampler runs indefinitely.");
   clopts.attach_option("doc_dir", doc_dir,
@@ -1257,17 +1157,17 @@ int main(int argc, char** argv) {
   }
 
   if(ALPHA <= 0) {
-    logstream(LOG_ERROR)
+    logstream(LOG_ERROR) 
       << "Alpha must be positive (alpha=" << ALPHA << ")!"  << std::endl;
     return EXIT_FAILURE;
   }
 
   if(BETA <= 0) {
-    logstream(LOG_ERROR)
+    logstream(LOG_ERROR) 
       << "Beta must be positive (beta=" << BETA << ")!"  << std::endl;
     return EXIT_FAILURE;
   }
-
+   
   /// Initialize the log_gamma precached calculations.
   ALPHA_LGAMMA.init(ALPHA, 100000);
   BETA_LGAMMA.init(BETA, 1000000);
@@ -1276,7 +1176,7 @@ int main(int argc, char** argv) {
   ///! load the graph
   graph_type graph(dc, clopts);
   {
-    const bool success =
+    const bool success = 
       load_and_initialize_graph(dc, graph, corpus_dir, format);
     if(!success) {
       logstream(LOG_ERROR) << "Error loading graph." << std::endl;
@@ -1303,18 +1203,18 @@ int main(int argc, char** argv) {
   { // Add the Global counts aggregator
     const bool success =
       engine.add_vertex_aggregator<factor_type>
-      ("global_counts",
-       global_counts_aggregator::map,
+      ("global_counts", 
+       global_counts_aggregator::map, 
        global_counts_aggregator::finalize) &&
       engine.aggregate_periodic("global_counts", 5);
     ASSERT_TRUE(success);
   }
-
+  
   { // Add the likelihood aggregator
     const bool success =
       engine.add_vertex_aggregator<likelihood_aggregator>
-      ("likelihood",
-       likelihood_aggregator::map,
+      ("likelihood", 
+       likelihood_aggregator::map, 
        likelihood_aggregator::finalize) &&
       engine.aggregate_periodic("likelihood", LIK_INTERVAL);
     ASSERT_TRUE(success);
@@ -1332,7 +1232,7 @@ int main(int argc, char** argv) {
   cgs_lda_vertex_program::DISABLE_SAMPLING = true;
   engine.signal_all();
   engine.start();
-
+  
   const double runtime = timer.current_time();
   dc.cout()
     << "----------------------------------------------------------" << std::endl
@@ -1341,9 +1241,9 @@ int main(int argc, char** argv) {
     << "Updates executed: " << engine.num_updates() << std::endl
     << "Update Rate (updates/second): "
     << engine.num_updates() / runtime << std::endl;
-
-
-
+  
+  
+  
   if(!word_dir.empty()) {
     // save word topic counts
     const bool gzip_output = false;
@@ -1352,11 +1252,11 @@ int main(int argc, char** argv) {
     const size_t threads_per_machine = 2;
     const bool save_words = true;
     graph.save(word_dir, count_saver(save_words),
-               gzip_output, save_vertices,
+               gzip_output, save_vertices, 
                save_edges, threads_per_machine);
   }
 
-
+  
   if(!doc_dir.empty()) {
     // save doc topic counts
     const bool gzip_output = false;
@@ -1365,7 +1265,7 @@ int main(int argc, char** argv) {
     const size_t threads_per_machine = 2;
     const bool save_words = false;
     graph.save(doc_dir, count_saver(save_words),
-               gzip_output, save_vertices,
+               gzip_output, save_vertices, 
                save_edges, threads_per_machine);
 
   }
@@ -1402,4 +1302,3 @@ int main(int argc, char** argv) {
 
 
 
->>>>>>> eaff9bf285066d29747ff82bbc7ac2e59e4f00f6

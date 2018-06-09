@@ -83,9 +83,9 @@ typedef std::vector< topic_id_type > assignment_type;
 struct vertex_data{
     // The count of tokens in each topic.
     factor_type factor;
-    int64_t flag;
-
-    vertex_data(int64_t f = IS_NULL) :flag(f), factor(NTOPICS, 0) { }
+    int flag;
+    int64_t outdegree;
+    vertex_data(int f = IS_NULL) :flag(f), factor(NTOPICS, 0), outdegree(0) { }
 
 };
 
@@ -196,7 +196,7 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld:%lld \n", vid, value.flag);
+            int n = sprintf(s, "%lld:%d:%lld \n", vid, value.flag, value.outdegree);
             writeNextResLine(s, n);
         }
     }
@@ -231,8 +231,8 @@ public:
 class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, double> {
 public:
     void compute(MessageIterator* pmsgs) {
-        // output number of outedge 
-        //vertex_data val = vertex_data();
+        vertex_data val = vertex_data();
+        val.flag = getValue().flag;
         //printf("%lld\n", getVertexId());
         if (getSuperstep() == 0) {
             //size_t ntokens = count_tokens();
@@ -241,8 +241,9 @@ public:
         } else {
             voteToHalt(); return;
         }
-        //val.n = 5; //getOutEdgeIterator().size();
-        //* mutableValue() = val;
+        
+        val.outdegree = get_outdegree();
+        * mutableValue() = val;
     }
     // judge if a vertex is doc
     int is_doc(){
@@ -251,6 +252,10 @@ public:
     // judge if a vertex is word
     int is_word(){
         return (getValue().flag==IS_WORD)? 0:1;
+    }
+    int64_t get_outdegree(){
+        int64_t rt = getOutEdgeIterator().size();
+        return rt;
     }
     // count tokens from edges
     size_t count_tokens(){
