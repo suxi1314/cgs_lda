@@ -28,7 +28,7 @@ if vertex is word:
 
 ## superstep odd (Qiancheng Wei)
 if vertex is doc:
-               recv edge data             send doc vector
+               recv edge data             send vertex_data
     (word----)------------------->doc----------------------->word
 
 all vertex:(Shanshan Wang)
