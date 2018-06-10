@@ -1,16 +1,36 @@
 #如果是有向图
-## 第0第0个superstep或者load_graph的时候赋topic初值给edge
-## odd superstep
-if vertex is_doc
+## even superstep
+if vertex is_doc:
     就gather edge上的topic, add to vector
     send edge上的topic给word
-## even superstep
-if vertex is_word
+## odd superstep
+if vertex is_word:
     recv edge topic , add to vector
     send vertex data to word？不可行
 有向图不可行
 
 #如果是有向的无向图
 读取有向的无向图，需要在数据集(test_graph_4w)中添加doc和word的个数，
+并在load_graph的时候, 利用doc和word的个数判断是何种节点，并标记flag
 
-并在load_graph的时候读出来， 利用doc和word的个数判断是何种节点，并标记flag
+Gibbs采样的迭代的过程如下:
+
+## superstep even (Xiaoyang Han)
+if vertex is word:
+    if superstep > 0:
+        (GLOBAL_TOPIC_COUNT, likelyhood) = getAggrGlobal()
+        if likelyhood < EPS:
+             voteToHalt
+
+          assign topic            send edge data
+    word--------------------edge-----------------(----->doc)
+         GLOBAL_TOPIC_COUNT
+
+## superstep odd (Qiancheng Wei)
+if vertex is doc:
+               recv edge data             send doc vector
+    (word----)------------------->doc----------------------->word
+
+all vertex:(Shanshan Wang)
+def Aggregator(vertex_data):
+    return (GLOBAL_TOPIC_COUNT, likelihood)
