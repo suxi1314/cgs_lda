@@ -1,3 +1,7 @@
-# can't change vertex_data.factor items
-change type?
-There is no such problem with assignment.
+# can't change items of vertex_data.factor in compute, it seems read-only.
+Can use push_back push only once.
+Infer the error lies in mutable.
+This problem appears when defining vertex_data as truct with constructor.
+While defining vertex_data as typedef struct with vector.resize works?
+Maybe in GraphLite, there is some thing like:
+Vertex_data* v1, v2;

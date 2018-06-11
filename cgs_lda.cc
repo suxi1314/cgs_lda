@@ -79,15 +79,15 @@ typedef std::vector< topic_id_type > assignment_type;
 /**
 * The vertex data represents each word and doc in the corpus and contains 
 * the counts of tokens(word,doc pair) in each topic. 
+* change vertex_data from struct to typedef struct for sume bug of graphlite.
 */
-struct vertex_data{
+typedef struct vertexData{
     // The count of tokens in each topic.
     factor_type factor;
     int flag;
     int64_t outdegree;
-    vertex_data(int f = IS_NULL) :flag(f), factor(NTOPICS, 0), outdegree(0) { }
 
-};
+}vertex_data;
 
 /**
 * The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
@@ -138,12 +138,9 @@ public:
         edge_data weight = 0;
         size_t ntoken = 0;
 
-        vertex_data doc_value = vertex_data(IS_DOC);
-
-        vertex_data word_value = vertex_data(IS_WORD);
+        vertex_data value;
 
         int outdegree = 0;
-        
 
         const char *line= getEdgeLine();
 
@@ -169,8 +166,7 @@ public:
             weight = edge_data(ntoken);
 
             if (last_vertex != from) {
-                if(last_vertex < total_doc) addVertex(last_vertex, &doc_value, outdegree);
-                else addVertex(last_vertex, &word_value, outdegree);
+                addVertex(last_vertex, &value, outdegree);
                 last_vertex = from;
                 outdegree = 1;
             } else {
@@ -178,8 +174,7 @@ public:
             }
             addEdge(from, to, &weight);
         }
-        if(last_vertex < total_doc) addVertex(last_vertex, &doc_value, outdegree);
-        else addVertex(last_vertex, &word_value, outdegree);
+        addVertex(last_vertex, &value, outdegree);
     }
 };
 /** VERTEX_CLASS_NAME(OutputFormatter): t
@@ -193,7 +188,7 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld:%d:%lld \n", vid, value.flag, value.outdegree);
+            int n = sprintf(s, "%lld:%d:%lld:%ld\n", vid, value.flag, value.outdegree, value.factor[0]);
             writeNextResLine(s, n);
         }
     }
@@ -228,19 +223,31 @@ public:
 class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, double> {
 public:
     void compute(MessageIterator* pmsgs) {
-        vertex_data val = vertex_data();
-        val.flag = getValue().flag;
+        vertex_data val;
+
         //printf("%lld\n", getVertexId());
-        if (getSuperstep() == 0) {
-            //size_t ntokens = count_tokens();
-            // assignment();
-            // val.factor += gather();
-        } else {
-            voteToHalt(); return;
+        if(getSuperstep() == 0){
+            val.factor.resize(2);
+            if(getVertexId() < total_doc) val.flag = 1;
+            else val.flag = -1;
+            val.factor[0] = 2;
+            val.factor[1] = 1;
+
+	    //size_t ntokens = count_tokens();
+	    // assignment();
+	    // val.factor += gather();
+        }else if(getSuperstep() == 1){
+            val = getValue();
+            val.factor[0] = 3;
+            val.factor[1] = 4;
+        }else{
+             voteToHalt(); return;      
         }
         
         val.outdegree = get_outdegree();
+        printf("%ld\n", val.factor[0]);
         * mutableValue() = val;
+
     }
     // judge if a vertex is doc
     int is_doc(){
