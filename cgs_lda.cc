@@ -30,8 +30,6 @@
 #include <string.h>
 #include <math.h>
 #include <vector>
-#include <boost/foreach.hpp>
-#include <boost/numeric/ublas/vector.hpp>
 #include <assert.h>
 
 #include "GraphLite.h"
@@ -47,22 +45,23 @@
 /**
  * \brief the total number of topics to uses
  */
-
-#ifdef DEBUG // run on vm
-#define ZERO_TOPIC (topic_id_type(0))
-#endif
-
-typedef unsigned long long vid_type;
-
 size_t NTOPICS = 2; 
 
-typedef long count_type;
-// factor_type is used to store the counts of tokens(word,doc pair) in each topic for words/docs.
-typedef std::vector< count_type > factor_type;
+/**
+ * We use the factor type in aggregator, so we define an operator+=
+ */
+inline vector<long>& operator+=(vector<long>& lvalue, const vector<long>& rvalue) {
+  if(!rvalue.empty()) {
+    if(lvalue.empty()) lvalue = rvalue;
+    else {
+      for(size_t t = 0; t < lvalue.size(); ++t) lvalue[t] += rvalue[t];
+    }
+  }
+  return lvalue;
+}
 
-typedef uint16_t topic_id_type;
 // We require a null topic to represent the topic assignment for tokens that have not yet been assigned.
-#define NULL_TOPIC (topic_id_type(-1))
+#define NULL_TOPIC long(-1)
 
 /**
 * The assignment type is used on each edge to store the
@@ -70,7 +69,6 @@ typedef uint16_t topic_id_type;
 * same word in a given document and so a vector is used to store the
 * assignments of each occurrence.
 */
-typedef std::vector< topic_id_type > assignment_type;
 
 #define IS_WORD -1
 #define IS_DOC 1
@@ -83,7 +81,7 @@ typedef std::vector< topic_id_type > assignment_type;
 */
 typedef struct vertexData{
     // The count of tokens in each topic.
-    factor_type factor;
+    vector<long> factor;
     int flag;
     int64_t outdegree;
 
@@ -95,7 +93,7 @@ typedef struct vertexData{
 typedef struct edgeData{
     size_t ntoken;
     // The assignment of all tokens
-    assignment_type assignment;
+    vector<long> assignment;
 }edge_data;
 
 unsigned long long total_doc;
@@ -127,13 +125,13 @@ public:
         return m_e_value_size;
     }
     int getMessageValueSize() {
-        m_m_value_size = sizeof(double);
+        m_m_value_size = sizeof(vector<long>);
         return m_m_value_size;
     }
     void loadGraph() {
-        vid_type last_vertex;
-        vid_type from;
-        vid_type to;
+        unsigned long long last_vertex;
+        unsigned long long from;
+        unsigned long long to;
 
         edge_data weight;
 
@@ -195,60 +193,58 @@ public:
 };
 
 /** VERTEX_CLASS_NAME(Aggregator): you can implement other types of aggregation */
-// An aggregator that records a double value to m compute sum
-// the <type name> is the type of result value of aggregator
-class VERTEX_CLASS_NAME(Aggregator): public Aggregator<size_t> {
+// the <type name> is the type of aggregator result value
+class VERTEX_CLASS_NAME(Aggregator): public Aggregator<vector<long>> {
 public:
     // type of m_global and m_local is the same with <type name>
     void init() {
-        m_global = 0;
-        m_local = 0;
+        m_global;
+        m_local;
     }
     void* getGlobal() {
         return &m_global;
     }
     // type of p is <type name>
     void setGlobal(const void* p) {
-        m_global = *(size_t *) p;
+        m_global = *(vector<long> *) p;
     }
     void* getLocal() {
         return &m_local;
     }
     // type of p is <type name>
     void merge(const void* p) {
-        m_global += *(size_t *) p;
+        m_global += *(vector<long> *) p;
     }
     // type of p is the type of value in AccumulateAggr(0, &value)
     void accumulate(const void* p) {
-        m_local += ((*(vertex_data *)p).factor).size();
+        m_local += *(vector<long> *) p;
     }
 };
 
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
-class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, double> {
+class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, vector<long>> {
 public:
     void compute(MessageIterator* pmsgs) {
         vertex_data val;
 
-        //printf("%lld\n", getVertexId());
         if(getSuperstep() == 0){
-            val.factor.resize(2, 0);
+            val.factor.assign(2, 0);
             val.outdegree = get_outdegree();
             if(getVertexId() < total_doc) val.flag = 1;
             else val.flag = -1;
 
-	    //size_t ntokens = count_tokens();
-	    // assignment();
-	    // val.factor += gather();
         }else if(getSuperstep() == 1){
             val = getValue();
             for(int t=0; t<NTOPICS; t++)
                 ++val.factor[t];
+
         }else{
-             printf("global aggr %zu\n", *(size_t*)getAggrGlobal(0));
+             //vector<long> global_topic_count = *(vector<long> *)getAggrGlobal(0);
              voteToHalt(); return;      
         }
-        accumulateAggr(0, &val);
+        vector<long> factor = val.factor;
+        // accumulateAggr(0, &factor);
+ 
         * mutableValue() = val;
 
     }
@@ -264,49 +260,7 @@ public:
         int64_t rt = getOutEdgeIterator().size();
         return rt;
     }
-    // count tokens from edges
-    size_t count_tokens(){
-        // count number of tokens on edges 
-        size_t ntokens = 0;
-        //int64_t vid = getVertexId();
-        //OutEdgeIterator out_edge_it = getOutEdgeIterator();
-        //for ( ; ! out_edge_it.done(); out_edge_it.next() ) {
-            //ntokens += (out_edge_it.getValue()).assignment.size();
-        //}
-        //printf("vid=%lld, ntokens=%zu\n", vid, ntokens);
-        return ntokens;
-    }
 
-    // gather current assignment from edges.
-    factor_type gather(){
-        factor_type rt = factor_type(NTOPICS, 0);
-        int64_t vid = getVertexId();
-        OutEdgeIterator out_edge_it = getOutEdgeIterator();
-        for ( ; ! out_edge_it.done(); out_edge_it.next() ) {
-            const assignment_type& assignment= (out_edge_it.getValue()).assignment;
-            BOOST_FOREACH(topic_id_type asg, assignment) {
-                if(asg != NULL_TOPIC) ++rt[asg];
-            }
-        }
-        return rt;
-    }
-
-    void assignment(){
-        int64_t vid = getVertexId();
-        OutEdgeIterator outEdges = getOutEdgeIterator();
-        for ( ; ! outEdges.done(); outEdges.next() ) {
-            char* p = outEdges.current();
-            topic_id_type topic = NULL_TOPIC;
-#ifdef DEBUG
-            topic = ZERO_TOPIC;
-#endif
-            assignment_type *assignment;
-            * assignment = ((assignment_type)((( edge_data *)( (Edge *)p )->weight) -> assignment));
-            size_t assignment_size = assignment->size();
-            assignment->assign(assignment_size,ZERO_TOPIC);
-        }
-        return ;
-    }
 };
 
 /** VERTEX_CLASS_NAME(Graph): set the running configuration here */
