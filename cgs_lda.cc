@@ -92,11 +92,11 @@ typedef struct vertexData{
 /**
 * The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
 */
-struct edge_data{
+typedef struct edgeData{
+    size_t ntoken;
     // The assignment of all tokens
     assignment_type assignment;
-    edge_data(size_t ntoken = 0) : assignment(ntoken, NULL_TOPIC) { }
-};
+}edge_data;
 
 unsigned long long total_doc;
 unsigned long long total_word;
@@ -135,12 +135,12 @@ public:
         vid_type from;
         vid_type to;
 
-        edge_data weight = 0;
-        size_t ntoken = 0;
+        edge_data weight;
 
         vertex_data value;
 
         int outdegree = 0;
+        size_t ntoken;
 
         const char *line= getEdgeLine();
 
@@ -149,7 +149,7 @@ public:
 
         // read edge weight
         sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
-        weight = edge_data(ntoken);
+        weight.ntoken = ntoken;
 
         addEdge(from, to, &weight);
 
@@ -163,7 +163,7 @@ public:
 
             // read edge weight
             sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
-            weight = edge_data(ntoken);
+            weight.ntoken = ntoken;
 
             if (last_vertex != from) {
                 addVertex(last_vertex, &value, outdegree);
@@ -196,8 +196,10 @@ public:
 
 /** VERTEX_CLASS_NAME(Aggregator): you can implement other types of aggregation */
 // An aggregator that records a double value to m compute sum
-class VERTEX_CLASS_NAME(Aggregator): public Aggregator<double> {
+// the <type name> is the type of result value of aggregator
+class VERTEX_CLASS_NAME(Aggregator): public Aggregator<size_t> {
 public:
+    // type of m_global and m_local is the same with <type name>
     void init() {
         m_global = 0;
         m_local = 0;
@@ -205,17 +207,20 @@ public:
     void* getGlobal() {
         return &m_global;
     }
+    // type of p is <type name>
     void setGlobal(const void* p) {
-        m_global = * (double *)p;
+        m_global = *(size_t *) p;
     }
     void* getLocal() {
         return &m_local;
     }
+    // type of p is <type name>
     void merge(const void* p) {
-        m_global += * (double *)p;
+        m_global += *(size_t *) p;
     }
+    // type of p is the type of value in AccumulateAggr(0, &value)
     void accumulate(const void* p) {
-        m_local += * (double *)p;
+        m_local += ((*(vertex_data *)p).factor).size();
     }
 };
 
@@ -227,25 +232,23 @@ public:
 
         //printf("%lld\n", getVertexId());
         if(getSuperstep() == 0){
-            val.factor.resize(2);
+            val.factor.resize(2, 0);
+            val.outdegree = get_outdegree();
             if(getVertexId() < total_doc) val.flag = 1;
             else val.flag = -1;
-            val.factor[0] = 2;
-            val.factor[1] = 1;
 
 	    //size_t ntokens = count_tokens();
 	    // assignment();
 	    // val.factor += gather();
         }else if(getSuperstep() == 1){
             val = getValue();
-            val.factor[0] = 3;
-            val.factor[1] = 4;
+            for(int t=0; t<NTOPICS; t++)
+                ++val.factor[t];
         }else{
+             printf("global aggr %zu\n", *(size_t*)getAggrGlobal(0));
              voteToHalt(); return;      
         }
-        
-        val.outdegree = get_outdegree();
-        printf("%ld\n", val.factor[0]);
+        accumulateAggr(0, &val);
         * mutableValue() = val;
 
     }
