@@ -34,7 +34,6 @@
 
 #include "GraphLite.h"
 
-
 #define DEBUG // run on vm
 
 
@@ -45,20 +44,11 @@
 /**
  * \brief the total number of topics to uses
  */
-size_t NTOPICS = 2; 
+#define NTOPICS size_t(50)
 
 /**
  * We use the factor type in aggregator, so we define an operator+=
  */
-inline vector<long>& operator+=(vector<long>& lvalue, const vector<long>& rvalue) {
-  if(!rvalue.empty()) {
-    if(lvalue.empty()) lvalue = rvalue;
-    else {
-      for(size_t t = 0; t < lvalue.size(); ++t) lvalue[t] += rvalue[t];
-    }
-  }
-  return lvalue;
-}
 
 // We require a null topic to represent the topic assignment for tokens that have not yet been assigned.
 #define NULL_TOPIC long(-1)
@@ -74,6 +64,10 @@ inline vector<long>& operator+=(vector<long>& lvalue, const vector<long>& rvalue
 #define IS_DOC 1
 #define IS_NULL 0
 
+
+typedef std::vector<long> vector_type;
+
+
 /**
 * The vertex data represents each word and doc in the corpus and contains 
 * the counts of tokens(word,doc pair) in each topic. 
@@ -81,7 +75,7 @@ inline vector<long>& operator+=(vector<long>& lvalue, const vector<long>& rvalue
 */
 typedef struct vertexData{
     // The count of tokens in each topic.
-    vector<long> factor;
+    vector_type factor;
     int flag;
     int64_t outdegree;
 
@@ -93,8 +87,10 @@ typedef struct vertexData{
 typedef struct edgeData{
     size_t ntoken;
     // The assignment of all tokens
-    vector<long> assignment;
+    vector_type assignment;
 }edge_data;
+
+
 
 unsigned long long total_doc;
 unsigned long long total_word;
@@ -125,7 +121,7 @@ public:
         return m_e_value_size;
     }
     int getMessageValueSize() {
-        m_m_value_size = sizeof(vector<long>);
+        m_m_value_size = sizeof(vector_type);
         return m_m_value_size;
     }
     void loadGraph() {
@@ -192,43 +188,56 @@ public:
     }
 };
 
+typedef struct aggregator_struct{
+    double likelihood;
+    long factor[NTOPICS];
+}aggr_type;
+
 /** VERTEX_CLASS_NAME(Aggregator): you can implement other types of aggregation */
 // the <type name> is the type of aggregator result value
-class VERTEX_CLASS_NAME(Aggregator): public Aggregator<vector<long>> {
+class VERTEX_CLASS_NAME(Aggregator): public Aggregator<aggr_type> {
 public:
     // type of m_global and m_local is the same with <type name>
     void init() {
         m_global;
         m_local;
     }
+
     void* getGlobal() {
         return &m_global;
     }
     // type of p is <type name>
     void setGlobal(const void* p) {
-        m_global = *(vector<long> *) p;
+        aggr_type aggr = *(aggr_type *) p;
+        m_global.factor[0] = aggr.factor[0];
+        for(int t = 0; t < NTOPICS; t++) m_global.factor[t] = aggr.factor[t];
     }
     void* getLocal() {
         return &m_local;
     }
     // type of p is <type name>
     void merge(const void* p) {
-        m_global += *(vector<long> *) p;
+        aggr_type aggr = *(aggr_type *) p;
+       for(int t = 0; t < NTOPICS; t++) m_global.factor[t] += aggr.factor[t];
+       
     }
     // type of p is the type of value in AccumulateAggr(0, &value)
     void accumulate(const void* p) {
-        m_local += *(vector<long> *) p;
+        vertex_data vdt = *(vertex_data*) p;
+        for(int t = 0; t < NTOPICS; t++) m_local.factor[t] += vdt.factor[t];
     }
+
 };
 
+
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
-class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, vector<long>> {
+class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, vector_type> {
 public:
     void compute(MessageIterator* pmsgs) {
         vertex_data val;
 
         if(getSuperstep() == 0){
-            val.factor.assign(2, 0);
+            val.factor.assign(NTOPICS, 0);
             val.outdegree = get_outdegree();
             if(getVertexId() < total_doc) val.flag = 1;
             else val.flag = -1;
@@ -239,12 +248,11 @@ public:
                 ++val.factor[t];
 
         }else{
-             //vector<long> global_topic_count = *(vector<long> *)getAggrGlobal(0);
+             aggr_type global_topic_count = *(aggr_type *)getAggrGlobal(0);
+             for(int t = 0; t < NTOPICS; t++) printf("%ld\n",global_topic_count.factor[t]);
              voteToHalt(); return;      
         }
-        vector<long> factor = val.factor;
-        // accumulateAggr(0, &factor);
- 
+        accumulateAggr(0, &val);
         * mutableValue() = val;
 
     }
