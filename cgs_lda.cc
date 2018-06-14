@@ -81,16 +81,6 @@ typedef struct vertexData{
 
 }vertex_data;
 
-/**
-* The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
-*/
-typedef struct edgeData{
-    size_t ntoken;
-    // The assignment of all tokens
-    vector_type assignment;
-}edge_data;
-
-
 
 unsigned long long total_doc;
 unsigned long long total_word;
@@ -117,7 +107,7 @@ public:
         return m_n_value_size;
     }
     int getEdgeValueSize() {
-        m_e_value_size = sizeof(edge_data);
+        m_e_value_size = sizeof(size_t);
         return m_e_value_size;
     }
     int getMessageValueSize() {
@@ -129,12 +119,11 @@ public:
         unsigned long long from;
         unsigned long long to;
 
-        edge_data weight;
+        size_t weight;
 
         vertex_data value;
 
         int outdegree = 0;
-        size_t ntoken;
 
         const char *line= getEdgeLine();
 
@@ -142,8 +131,7 @@ public:
         //       modify the 'weight' variable
 
         // read edge weight
-        sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
-        weight.ntoken = ntoken;
+        sscanf(line, "%lld %lld %zu", &from, &to, &weight);
 
         addEdge(from, to, &weight);
 
@@ -156,8 +144,7 @@ public:
             //       modify the 'weight' variable
 
             // read edge weight
-            sscanf(line, "%lld %lld %zu", &from, &to, &ntoken);
-            weight.ntoken = ntoken;
+            sscanf(line, "%lld %lld %zu", &from, &to, &weight);
 
             if (last_vertex != from) {
                 addVertex(last_vertex, &value, outdegree);
@@ -231,7 +218,7 @@ public:
 
 
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
-class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, vector_type> {
+class VERTEX_CLASS_NAME(): public Vertex <vertex_data, size_t, vector_type> {
 public:
     void compute(MessageIterator* pmsgs) {
         vertex_data val;
