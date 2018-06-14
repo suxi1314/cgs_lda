@@ -31,20 +31,34 @@
 #include <math.h>
 #include <vector>
 #include <assert.h>
+#include <boost/math/special_functions/gamma.hpp>
+
 
 #include "GraphLite.h"
 
 #define DEBUG // run on vm
 
 
-/** change VERTEX_CLASS_NAME(name) definition to use a different class name */
+/**
+* change VERTEX_CLASS_NAME(name) definition to use a different class name 
+*/
 #define VERTEX_CLASS_NAME(name) cgs_lda##name
 
 #define EPS 1e-6
 /**
- * \brief the total number of topics to uses
+ * the total number of topics to uses
  */
 #define NTOPICS size_t(50)
+
+/**
+ * the alpha parameter determines the sparsity of topics for each document.
+ */
+double ALPHA = 1;
+
+/**
+ * the Beta parameter determines the sparsity of words in each document.
+ */
+double BETA = 0.1;
 
 /**
  * We use the factor type in aggregator, so we define an operator+=
@@ -179,6 +193,37 @@ typedef struct aggregator_struct{
     double likelihood;
     long factor[NTOPICS];
 }aggr_type;
+
+/**
+ * Computing log_gamma can be a bit slow so this class precomptues
+ * log gamma for a subset of values.
+ */
+class log_gamma {
+  double offset;
+  std::vector<double> values;
+public:
+  log_gamma(): offset(1.0) {}
+
+  void init(const double& new_offset, const size_t& buckets) {
+    using boost::math::lgamma;
+    assert(offset > 0.0);
+    values.resize(buckets);
+    offset = new_offset;
+    for(size_t i = 0; i < values.size(); ++i) {
+      values[i] = lgamma(i + offset);
+    }
+  }
+
+  double operator()(const long& index) const {
+    using boost::math::lgamma;
+    if(index < values.size() && index >= 0) { return values[index]; }
+    else { return lgamma(index + offset); }
+  }
+
+};
+
+log_gamma ALPHA_LGAMMA;
+log_gamma BETA_LGAMMA;
 
 /** VERTEX_CLASS_NAME(Aggregator): you can implement other types of aggregation */
 // the <type name> is the type of aggregator result value
