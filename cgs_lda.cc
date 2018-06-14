@@ -191,7 +191,7 @@ public:
 
 typedef struct aggregator_struct{
     double likelihood;
-    long factor[NTOPICS];
+    long count[NTOPICS];
 }aggr_type;
 
 /**
@@ -241,8 +241,8 @@ public:
     // type of p is <type name>
     void setGlobal(const void* p) {
         aggr_type aggr = *(aggr_type *) p;
-        m_global.factor[0] = aggr.factor[0];
-        for(int t = 0; t < NTOPICS; t++) m_global.factor[t] = aggr.factor[t];
+        m_global.count[0] = aggr.count[0];
+        for(int t = 0; t < NTOPICS; t++) m_global.count[t] = aggr.count[t];
     }
     void* getLocal() {
         return &m_local;
@@ -250,13 +250,13 @@ public:
     // type of p is <type name>
     void merge(const void* p) {
         aggr_type aggr = *(aggr_type *) p;
-       for(int t = 0; t < NTOPICS; t++) m_global.factor[t] += aggr.factor[t];
+       for(int t = 0; t < NTOPICS; t++) m_global.count[t] += aggr.count[t];
        
     }
     // type of p is the type of value in AccumulateAggr(0, &value)
     void accumulate(const void* p) {
         vertex_data vdt = *(vertex_data*) p;
-        for(int t = 0; t < NTOPICS; t++) m_local.factor[t] += vdt.factor[t];
+        for(int t = 0; t < NTOPICS; t++) m_local.count[t] += vdt.factor[t];
     }
 
 };
@@ -281,7 +281,7 @@ public:
 
         }else{
              aggr_type global_topic_count = *(aggr_type *)getAggrGlobal(0);
-             for(int t = 0; t < NTOPICS; t++) printf("%ld\n",global_topic_count.factor[t]);
+             for(int t = 0; t < NTOPICS; t++) printf("%ld\n",global_topic_count.count[t]);
              voteToHalt(); return;      
         }
         accumulateAggr(0, &val);
