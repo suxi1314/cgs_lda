@@ -99,6 +99,14 @@ typedef struct vertexData{
 unsigned long long total_doc;
 unsigned long long total_word;
 
+/**
+* The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
+*/
+typedef struct edgeData{
+    size_t ntoken;
+    // The assignment of all tokens
+    vector_type assignment;
+}edge_data;
 
 /** VERTEX_CLASS_NAME(InputFormatter) can be kept as is */
 class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
@@ -121,7 +129,7 @@ public:
         return m_n_value_size;
     }
     int getEdgeValueSize() {
-        m_e_value_size = sizeof(size_t);
+        m_e_value_size = sizeof(edge_data);
         return m_e_value_size;
     }
     int getMessageValueSize() {
@@ -133,7 +141,7 @@ public:
         unsigned long long from;
         unsigned long long to;
 
-        size_t weight;
+        edge_data weight;
 
         vertex_data value;
 
@@ -145,7 +153,7 @@ public:
         //       modify the 'weight' variable
 
         // read edge weight
-        sscanf(line, "%lld %lld %zu", &from, &to, &weight);
+        sscanf(line, "%lld %lld %zu", &from, &to, &(weight.ntoken));
 
         addEdge(from, to, &weight);
 
@@ -158,7 +166,7 @@ public:
             //       modify the 'weight' variable
 
             // read edge weight
-            sscanf(line, "%lld %lld %zu", &from, &to, &weight);
+            sscanf(line, "%lld %lld %zu", &from, &to, &(weight.ntoken));
 
             if (last_vertex != from) {
                 addVertex(last_vertex, &value, outdegree);
@@ -172,7 +180,7 @@ public:
         addVertex(last_vertex, &value, outdegree);
     }
 };
-/** VERTEX_CLASS_NAME(OutputFormatter): t
+/** VERTEX_CLASS_NAME(OutputFormatter): 
 his is where the output is generated */
 class VERTEX_CLASS_NAME(OutputFormatter): public OutputFormatter {
 public:
@@ -190,8 +198,10 @@ public:
 };
 
 typedef struct aggregator_struct{
-    double likelihood;
     long count[NTOPICS];
+    double lik_words_given_topics;
+    double lik_topics;
+    double likelihood;
 }aggr_type;
 
 /**
@@ -263,28 +273,32 @@ public:
 
 
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
-class VERTEX_CLASS_NAME(): public Vertex <vertex_data, size_t, vector_type> {
+class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, vector_type> {
 public:
     void compute(MessageIterator* pmsgs) {
         vertex_data val;
 
         if(getSuperstep() == 0){
+            init_edge_topic();
+            scatter_edge_topic();
             val.factor.assign(NTOPICS, 0);
             val.outdegree = get_outdegree();
             if(getVertexId() < total_doc) val.flag = 1;
             else val.flag = -1;
 
         }else if(getSuperstep() == 1){
+            gather_edge_topic();
+
             val = getValue();
             for(int t=0; t<NTOPICS; t++)
                 ++val.factor[t];
 
         }else{
-             aggr_type global_topic_count = *(aggr_type *)getAggrGlobal(0);
-             for(int t = 0; t < NTOPICS; t++) printf("%ld\n",global_topic_count.count[t]);
+             //aggr_type global_topic_count = *(aggr_type *)getAggrGlobal(0);
+             //for(int t = 0; t < NTOPICS; t++) printf("%ld\n",global_topic_count.count[t]);
              voteToHalt(); return;      
         }
-        accumulateAggr(0, &val);
+        //accumulateAggr(0, &val);
         * mutableValue() = val;
 
     }
@@ -300,6 +314,44 @@ public:
         int64_t rt = getOutEdgeIterator().size();
         return rt;
     }
+
+    void init_edge_topic(){
+        OutEdgeIterator outEdges = getOutEdgeIterator();
+   
+        for ( ; ! outEdges.done(); outEdges.next() ) {
+
+            Edge* edge = (Edge *)(outEdges.current());
+            edge_data* p = (edge_data *)(edge->weight);
+            p->assignment.assign(p->ntoken, NULL_TOPIC);
+        }
+        return ;
+    }
+
+    void scatter_edge_topic(){
+        OutEdgeIterator outEdges = getOutEdgeIterator();
+        for ( ; ! outEdges.done(); outEdges.next() ) {
+            Edge* edge = (Edge *)(outEdges.current());
+            edge_data* p = (edge_data *)(edge->weight);
+            printf("ntoken = %zu\n", p->ntoken);
+            for(size_t t = 0; t < (p->ntoken); t++){
+                (p->assignment)[t] = t;
+            }
+        }
+        return ;
+    }
+
+    void gather_edge_topic(){
+        OutEdgeIterator outEdges = getOutEdgeIterator();
+        for ( ; ! outEdges.done(); outEdges.next() ) {
+            edge_data p = outEdges.getValue();
+            printf("ntoken = %zu\n", p.ntoken);
+            for(size_t t = 0; t < (p.ntoken); t++){
+                printf("asg[%zu] = %ld\n", t,(p.assignment)[t]);
+            }
+        }
+        return ;
+    }
+
 
 };
 
