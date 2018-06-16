@@ -96,8 +96,9 @@ typedef struct vertexData{
 }vertex_data;
 
 
-unsigned long long total_doc;
-unsigned long long total_word;
+unsigned long long NDOCS;
+unsigned long long NWORDS;
+unsigned long long NVERTICES;
 
 /**
 * The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
@@ -113,7 +114,8 @@ class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
 public:
     int64_t getVertexNum() {
         unsigned long long n;
-        sscanf(m_ptotal_vertex_line, "%lld %lld %lld", &n, &total_doc, &total_word);
+        sscanf(m_ptotal_vertex_line, "%lld %lld %lld", &n, &NDOCS, &NWORDS);
+        NVERTICES = NDOCS+NWORDS;
         m_total_vertex= n;
         return m_total_vertex;
     }
@@ -199,9 +201,9 @@ public:
 
 typedef struct aggregator_struct{
     long count[NTOPICS];
-    double lik_words_given_topics;
-    double lik_topics;
-    double likelihood;
+    double lik_words_given_topics = 0.0;
+    double lik_topics = 0.0;
+    double likelihood = 0.0;
 }aggr_type;
 
 /**
@@ -248,25 +250,66 @@ public:
     void* getGlobal() {
         return &m_global;
     }
+
     // type of p is <type name>
     void setGlobal(const void* p) {
+        using boost::math::lgamma;
         aggr_type aggr = *(aggr_type *) p;
         m_global.count[0] = aggr.count[0];
-        for(int t = 0; t < NTOPICS; t++) m_global.count[t] = aggr.count[t];
+        //global_topic_count
+        for(int t = 0; t < NTOPICS; t++) m_global.count[t] = aggr.count[t]/2;
+        //likelihood
+        double denominator = 0; // the denominator of the formula
+        for(size_t t = 0; t < NTOPICS; ++t) {
+            denominator += lgamma(long(m_global.count) + NWORDS * BETA);
+        } 
+        m_global.lik_words_given_topics = NTOPICS * (lgamma(NWORDS * BETA) 
+                                            - NWORDS * lgamma(BETA)) 
+                                            - denominator 
+                                            + aggr.lik_words_given_topics;
+        m_global.lik_topics = NDOCS * (lgamma(NTOPICS * ALPHA) 
+                            - NTOPICS * lgamma(ALPHA)) 
+                            + aggr.lik_topics;
+        m_global.likelihood = m_global.lik_words_given_topics + m_global.lik_topics;
     }
+
     void* getLocal() {
         return &m_local;
     }
+
     // type of p is <type name>
     void merge(const void* p) {
         aggr_type aggr = *(aggr_type *) p;
-       for(int t = 0; t < NTOPICS; t++) m_global.count[t] += aggr.count[t];
-       
+        //global_count_topic
+        for(int t = 0; t < NTOPICS; t++) m_global.count[t] += aggr.count[t];
+        //likelihood
+        m_global.lik_words_given_topics += aggr.lik_words_given_topics;
+        m_global.lik_topics += aggr.lik_topics;
     }
+
     // type of p is the type of value in AccumulateAggr(0, &value)
     void accumulate(const void* p) {
-        vertex_data vdt = *(vertex_data*) p;
-        for(int t = 0; t < NTOPICS; t++) m_local.count[t] += vdt.factor[t];
+        using boost::math::lgamma;
+        vertex_data val = *(vertex_data*) p;
+        vector_type& factor = val.factor;  
+        // global_count_topic
+        for(int t = 0; t < NTOPICS; t++) m_local.count[t] += factor[t];
+        // likelihood
+        int flag = val.flag;
+        if(flag==IS_WORD){
+            for(size_t t = 0; t < NTOPICS; ++t) {
+                m_local.lik_words_given_topics += BETA_LGAMMA(long(factor[t]));
+                // printf("%ld %lf\n", long(factor[t]), m_local.lik_words_given_topics);
+            }
+        }else{
+            double ntokens_in_doc = 0;
+            for(size_t t = 0; t < NTOPICS; ++t) {
+                m_local.lik_topics += ALPHA_LGAMMA(long(factor[t]));
+                ntokens_in_doc += long(factor[t]);
+            }
+            m_local.lik_topics -= lgamma(ntokens_in_doc + NTOPICS * ALPHA);
+        }
+
     }
 
 };
@@ -283,8 +326,9 @@ public:
             scatter_edge_topic();
             val.factor.assign(NTOPICS, 0);
             val.outdegree = get_outdegree();
-            if(getVertexId() < total_doc) val.flag = 1;
+            if(getVertexId() < NDOCS) val.flag = 1;
             else val.flag = -1;
+            assert(getVertexId() < NVERTICES);
 
         }else if(getSuperstep() == 1){
             gather_edge_topic();
@@ -294,11 +338,12 @@ public:
                 ++val.factor[t];
 
         }else{
-             //aggr_type global_topic_count = *(aggr_type *)getAggrGlobal(0);
-             //for(int t = 0; t < NTOPICS; t++) printf("%ld\n",global_topic_count.count[t]);
+             aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
+             for(size_t t = 0; t < NTOPICS; t++) printf("global_topic_count[%zu] = %ld\n", t, aggr.count[t]);
+             printf("likelihood = %lf\n", aggr.likelihood);
              voteToHalt(); return;      
         }
-        //accumulateAggr(0, &val);
+        accumulateAggr(0, &val);
         * mutableValue() = val;
 
     }
@@ -332,7 +377,7 @@ public:
         for ( ; ! outEdges.done(); outEdges.next() ) {
             Edge* edge = (Edge *)(outEdges.current());
             edge_data* p = (edge_data *)(edge->weight);
-            printf("ntoken = %zu\n", p->ntoken);
+            //printf("ntoken = %zu\n", p->ntoken);
             for(size_t t = 0; t < (p->ntoken); t++){
                 (p->assignment)[t] = t;
             }
@@ -344,9 +389,9 @@ public:
         OutEdgeIterator outEdges = getOutEdgeIterator();
         for ( ; ! outEdges.done(); outEdges.next() ) {
             edge_data p = outEdges.getValue();
-            printf("ntoken = %zu\n", p.ntoken);
+            //printf("ntoken = %zu\n", p.ntoken);
             for(size_t t = 0; t < (p.ntoken); t++){
-                printf("asg[%zu] = %ld\n", t,(p.assignment)[t]);
+                //printf("asg[%zu] = %ld\n", t,(p.assignment)[t]);
             }
         }
         return ;
