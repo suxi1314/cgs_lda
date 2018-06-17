@@ -32,7 +32,7 @@
 #include <vector>
 #include <assert.h>
 #include <boost/math/special_functions/gamma.hpp>
-
+#include <random>
 
 #include "GraphLite.h"
 
@@ -289,7 +289,9 @@ public:
     void merge(const void* p) {
         aggr_type aggr = *(aggr_type *) p;
         //global_count_topic
-        for(int t = 0; t < NTOPICS; t++) m_global.count[t] += aggr.count[t];
+        for(int t = 0; t < NTOPICS; t++){
+             m_global.count[t] += aggr.count[t];
+        }
         //likelihood
         m_global.lik_words_given_topics += aggr.lik_words_given_topics;
         m_global.lik_topics += aggr.lik_topics;
@@ -301,7 +303,9 @@ public:
         vertex_data val = *(vertex_data*) p;
         vector_type& factor = val.factor;  
         // global_count_topic
-        for(int t = 0; t < NTOPICS; t++) m_local.count[t] += factor[t];
+        for(int t = 0; t < NTOPICS; t++){
+              m_local.count[t] += factor[t];
+        }
         // likelihood
         int flag = val.flag;
         double lik_words_given_topics = 0.0;
@@ -331,41 +335,125 @@ public:
 class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, message_type> {
 public:
     void compute(MessageIterator* pmsgs) {
-        vertex_data val;
 
+        vertex_data val;
+	    vector_type ass_send, ass_recv;
+	    message_type ms_send, ms_recv, mesa;
+
+        // superstep 0 initialize variables
         if(getSuperstep() == 0){
-            init_edge_topic();
-            scatter_edge_topic();
             val.factor.assign(NTOPICS, 0);
             val.outdegree = get_outdegree();
             if(getVertexId() < NDOCS) val.flag = 1;
             else val.flag = -1;
             assert(getVertexId() < NVERTICES);
 
-        }else if(getSuperstep() == 1){
-            gather_edge_topic();
+            // if current vertex is word, assign topic to edge
+            // and send edge data to to doc
+            if(is_word()){
 
+                // initialize edge assignment to NULL_TOPIC
+                init_edge_topic();
+
+                std::vector<double> prob(NTOPICS);
+                long global[NTOPICS];
+                long doc_topic_count[NTOPICS];
+                long word_topic_count[NTOPICS];
+
+                for(size_t t = 0; t < NTOPICS; t++){
+                    global[t] = 0;
+                    word_topic_count[t] = 0;
+                    doc_topic_count[t] = 0;
+                }
+                OutEdgeIterator out_edge_it = getOutEdgeIterator();
+                //iterate all outedges and compute assignment topic
+                for ( ; !out_edge_it.done(); out_edge_it.next()){ 
+                    // temp variable assignment
+                    // need to be passed to edge data
+                    vector_type assignment = out_edge_it.getValue().assignment;
+                    // compute assigment of one outedge
+                    for(size_t t = 0; t < NTOPICS; t++){
+                        // asg is a referenc of assignment[t]
+                        long& asg = assignment[t];
+                        if(asg != NULL_TOPIC){
+     			     
+			                --doc_topic_count[asg];
+       			            --word_topic_count[asg];
+        		            --global[asg];
+     			        }
+
+		                // compute probability of multinomial
+		                for(size_t t = 0; t < NTOPICS; ++t){
+		                    const double n_dt = std::max(long(doc_topic_count[t]), long(0));
+		                    const double n_wt = std::max(long(word_topic_count[t]), long(0));
+		                    const double n_t  = std::max(long(global[t]), long(0));
+		                    prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
+		  		        }
+
+                        // get new asg using random multinomial
+		                asg = multinomial(prob);
+		                ++doc_topic_count[asg];
+		  			    ++word_topic_count[asg];
+		  			    ++global[asg];
+		            }
+
+                    // pass new assignment to current outedge data
+                    Edge* edge = (Edge *)(out_edge_it.current());
+                    edge_data* p = (edge_data *)(edge->weight);
+                    for(size_t t = 0; t < assignment.size(); t++)
+                        (p->assignment)[t] = assignment[t];
+
+                    // send new assignment to doc vertex
+                    unsigned long long vid_to = out_edge_it.target();
+		            ms_send.vid = getVertexId();
+		            for(size_t t = 0; t < NTOPICS; t++){
+                        ms_send.factor[t] = 0;
+                    }
+		            for(size_t t = 0; t < assignment.size();t++){
+                        ms_send.factor[assignment[t]]++;
+                    }
+	                sendMessageTo(vid_to, ms_send);
+                }
+                   
+            }
+
+        }else{// superstep != 0
+
+            // volt to halt
+            if(getSuperstep() >= 3){
+                 aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
+		         for(size_t t = 0; t < NTOPICS; t++){
+                     printf("global_topic_count[%zu] = %ld\n", t, aggr.count[t]);
+             }
+                printf("likelihood = %lf\n", aggr.likelihood);
+                if(1)
+                    voteToHalt(); return;   
+            }
+
+            // get old vertex value
             val = getValue();
-            for(int t=0; t<NTOPICS; t++)
-                ++val.factor[t];
 
-        }else{
-             aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
-             for(size_t t = 0; t < NTOPICS; t++) printf("global_topic_count[%zu] = %ld\n", t, aggr.count[t]);
-             printf("likelihood = %lf\n", aggr.likelihood);
-             voteToHalt(); return;      
+		    if(getSuperstep() % 2 == 1){
+
+		               
+		    }
+		    if(getSuperstep() % 2 == 0){
+
+
+		    }
         }
-        accumulateAggr(0, &val);
-        * mutableValue() = val;
+
+	    accumulateAggr(0, &val);
+	    * mutableValue() = val;
 
     }
     // judge if a vertex is doc
     int is_doc(){
-        return (getValue().flag==IS_DOC)? 1:0;
+        return (getValue().flag==IS_DOC)? true:false;
     }
     // judge if a vertex is word
     int is_word(){
-        return (getValue().flag==IS_WORD)? 0:1;
+        return (getValue().flag==IS_WORD)? true:false;
     }
     int64_t get_outdegree(){
         int64_t rt = getOutEdgeIterator().size();
@@ -408,7 +496,26 @@ public:
         }
         return ;
     }
-
+    size_t multinomial(const std::vector<double>& prb) 
+    {
+		std::default_random_engine generator;
+	  	std::uniform_real_distribution<double> distribution(0.0,1.0);
+		assert(prb.size()>0);
+		if (prb.size() == 1) return 0;
+		double sum(0);
+		for(size_t i = 0; i < prb.size(); ++i){
+			assert(prb[i]>=0); 
+			sum += prb[i];
+		}
+		assert(sum>0);
+		const double rnd(distribution(generator));
+		size_t ind = 0;
+		for(double cumsum(prb[ind]/sum); 
+			rnd > cumsum && (ind+1) < prb.size(); 
+		cumsum += (prb[++ind]/sum));
+		return ind;
+    }
+    
 
 };
 
