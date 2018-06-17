@@ -93,9 +93,9 @@ typedef std::vector<long> vector_type;
 */
 typedef struct vertexData{
     // The count of tokens in each topic.
-    vector_type factor;
-    int flag;
-    int64_t outdegree;
+    vector_type factor; // a vector of topic count
+    int flag; // judge is word or doc
+    int64_t outdegree; // number of outdegree for debug
 
 }vertex_data;
 
@@ -205,7 +205,20 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld:%d:%lld:%ld\n", (unsigned long long)vid, value.flag, (unsigned long long)value.outdegree, value.factor[0]);
+            int n;
+
+            std::string factor = "";
+            for(size_t t = 0; t < NTOPICS; t++){
+                 char temp[20];
+                 sprintf(temp, "%-10lld", (unsigned long long)(value.factor[t]));
+                 factor += temp;
+            }
+            if(value.flag == IS_DOC){
+                n = sprintf(s, "%-5s:%-10lld: %s\n", "doc", (unsigned long long)vid, factor.c_str());
+            }else{
+                int64_t id = std::max(vid - int64_t(NDOCS), int64_t(0));
+                n = sprintf(s, "%-5s:%-10lld: %s\n", "word", (unsigned long long)id, factor.c_str());
+            }
             writeNextResLine(s, n);
         }
     }
@@ -358,15 +371,10 @@ public:
                 init_edge_topic();
 
                 std::vector<double> prob(NTOPICS);
-                long global_topic_count[NTOPICS];
-                long doc_topic_count[NTOPICS];
-                long word_topic_count[NTOPICS];
+                vector_type global_topic_count(NTOPICS, 0);
+                vector_type doc_topic_count(NTOPICS, 0);
+                vector_type& word_topic_count = val.factor;
 
-                for(size_t t = 0; t < NTOPICS; t++){
-                    global_topic_count[t] = 0;
-                    word_topic_count[t] = 0;
-                    doc_topic_count[t] = 0;
-                }
                 OutEdgeIterator out_edge_it = getOutEdgeIterator();
                 //iterate all outedges and compute assignment topic
                 for ( ; !out_edge_it.done(); out_edge_it.next()){
@@ -415,7 +423,6 @@ public:
 		            for(size_t t = 0; t < assignment.size();t++){
                         ms_send.factor[assignment[t]]++;
                     }
-
                     sendMessageTo(vid_to, ms_send);
 
                 }
@@ -432,13 +439,14 @@ public:
        
                 // doc recv assign, send factor to word
                 if(val.flag==IS_DOC){
-
+                    //printf("is_doc\n");
                     //receive new assignment from word vertex
                     for (;!pmsgs->done(); pmsgs->next()){	
-                        assert(!pmsgs->done());
+                        // if(pmsgs->done()) printf("error\n");
                         // add new assignment to old count factor
                         for(size_t t = 0 ; t < NTOPICS; t++){
-			     			val.factor[t] += pmsgs->getValue().factor[t];	
+			     			val.factor[t] += pmsgs->getValue().factor[t];
+                           
                         }
                     }  
 
@@ -452,7 +460,7 @@ public:
                     // too many out messages, can't use sendall
                     // consider add worker or compress message
                     sendMessageToAllNeighbors(ms_send);
-              
+                    //printf("%ld\n",  ms_send.factor[1]);
                 }
 
                 // compute aggregator
@@ -465,7 +473,7 @@ public:
 
                 // check aggregator result and judge if voletohalt
 				aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
-                long global_topic_count[NTOPICS];
+                vector_type global_topic_count(NTOPICS, 0);
                 for(size_t t; t < NTOPICS; t++){
                     global_topic_count[t] = aggr.count[t];
                 }
@@ -490,20 +498,16 @@ public:
 
                     // get global topic count from aggregator
                     aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
-                    long word_topic_count[NTOPICS];
-                    for(size_t t; t < NTOPICS; t++){
-                        word_topic_count[t] = val.factor[t];
-                    }
-
+                    vector_type& word_topic_count = val.factor;
                     // each msg from one doc
                     // update the edge which connect current doc and this word
                     for (;!pmsgs->done();pmsgs->next()){
 
                          message_type recv = pmsgs->getValue();
                          unsigned long long vid_from = recv.vid;
-                         long doc_topic_count[NTOPICS];
+                         vector_type doc_topic_count(NTOPICS, 0);
                          for(size_t t; t < NTOPICS; t++){
-				             word_topic_count[t] = recv.factor[t];
+				             doc_topic_count[t] = recv.factor[t];
                          }
 
                          OutEdgeIterator out_edge_it = getOutEdgeIterator();
