@@ -109,6 +109,14 @@ typedef struct edgeData{
     vector_type assignment;
 }edge_data;
 
+
+typedef struct
+{
+    //int a;
+    long factor[NTOPICS];
+    long long vid;//Vertex ID
+}message_type;
+
 /** VERTEX_CLASS_NAME(InputFormatter) can be kept as is */
 class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
 public:
@@ -135,7 +143,7 @@ public:
         return m_e_value_size;
     }
     int getMessageValueSize() {
-        m_m_value_size = sizeof(vector_type);
+        m_m_value_size = sizeof(message_type);
         return m_m_value_size;
     }
     void loadGraph() {
@@ -320,7 +328,7 @@ public:
 
 
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
-class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, vector_type> {
+class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, message_type> {
 public:
     void compute(MessageIterator* pmsgs) {
         vertex_data val;
