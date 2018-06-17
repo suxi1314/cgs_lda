@@ -32,7 +32,10 @@
 #include <vector>
 #include <assert.h>
 #include <boost/math/special_functions/gamma.hpp>
+#include <boost/property_tree/ptree.hpp>
+#include <boost/property_tree/json_parser.hpp>
 #include <random>
+#include <unistd.h>
 
 #include "GraphLite.h"
 
@@ -48,7 +51,7 @@
 /**
  * the total number of topics to uses
  */
-#define NTOPICS size_t(50)
+#define NTOPICS size_t(10)
 
 /**
  * the alpha parameter determines the sparsity of topics for each document.
@@ -338,7 +341,6 @@ public:
 
         vertex_data val;
 	    vector_type ass_send, ass_recv;
-	    message_type ms_send, ms_recv, mesa;
 
         // superstep 0 initialize variables
         if(getSuperstep() == 0){
@@ -405,14 +407,16 @@ public:
 
                     // send new assignment to doc vertex
                     unsigned long long vid_to = out_edge_it.target();
+	                message_type ms_send;
 		            ms_send.vid = getVertexId();
 		            for(size_t t = 0; t < NTOPICS; t++){
                         ms_send.factor[t] = 0;
                     }
-		            for(size_t t = 0; t < assignment.size();t++){
+		            for(size_t t = 0; t < NTOPICS;t++){
                         ms_send.factor[assignment[t]]++;
                     }
-	                sendMessageTo(vid_to, ms_send);
+	                // sendMessageTo(vid_to, ms_send);
+                    sendMessageTo(vid_to, ms_send);
                 }
                    
             }
@@ -421,11 +425,11 @@ public:
 
             // volt to halt
             if(getSuperstep() >= 3){
-                 aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
-		         for(size_t t = 0; t < NTOPICS; t++){
-                     printf("global_topic_count[%zu] = %ld\n", t, aggr.count[t]);
-             }
-                printf("likelihood = %lf\n", aggr.likelihood);
+                aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
+		        for(size_t t = 0; t < NTOPICS; t++){
+                     //printf("global_topic_count[%zu] = %ld\n", t, aggr.count[t]);
+                }
+                //printf("likelihood = %lf\n", aggr.likelihood);
                 if(1)
                     voteToHalt(); return;   
             }
@@ -435,10 +439,29 @@ public:
 
 		    if(getSuperstep() % 2 == 1){
 
-		               
-		    }
-		    if(getSuperstep() % 2 == 0){
+                if(is_doc()){
 
+                    //receive new assignment from word vertex
+                    for (;!pmsgs->done(); pmsgs->next()){	
+                        assert(!pmsgs->done());
+                        // add new assignment to old count factor
+                        for(size_t t = 0 ; t < NTOPICS; t++){
+			     			val.factor[t] += pmsgs->getValue().factor[t];	
+                        }
+                    }  
+
+                    // send doc vertex factor to word
+                    message_type ms_send;
+                    for(size_t t = 0; t < NTOPICS;t++){
+                        ms_send.factor[t] = val.factor[t];
+                    }
+                    // too many out messages, can't use sendall
+                    // consider parse message_tyep to json
+                    sendMessageToAllNeighbors(ms_send);
+                }
+		    }
+
+		    if(getSuperstep() % 2 == 0){
 
 		    }
         }
@@ -529,13 +552,25 @@ public:
     // argv[1]: <input path>
     // argv[2]: <output path>
     void init(int argc, char* argv[]) {
-
+/*
         setNumHosts(5);
         setHost(0, "localhost", 1411);
         setHost(1, "localhost", 1421);
         setHost(2, "localhost", 1431);
         setHost(3, "localhost", 1441);
         setHost(4, "localhost", 1451);
+*/
+
+        setNumHosts(9);
+        setHost(0, "localhost", 1411);
+        setHost(1, "localhost", 1421);
+        setHost(2, "localhost", 1431);
+        setHost(3, "localhost", 1441);
+        setHost(4, "localhost", 1451);
+        setHost(5, "localhost", 1461);
+        setHost(6, "localhost", 1471);
+        setHost(7, "localhost", 1481);
+        setHost(8, "localhost", 1491);
 
         if (argc < 3) {
            printf ("Usage: %s <input path> <output path>\n", argv[0]);
