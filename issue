@@ -1,1 +1,4 @@
 global_topic_count在什么尺度可见？
+If NTOPICS > 10, the send function will abort?
+solve1: compress message
+solve2: add worker

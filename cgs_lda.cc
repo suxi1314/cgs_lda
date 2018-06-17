@@ -358,12 +358,12 @@ public:
                 init_edge_topic();
 
                 std::vector<double> prob(NTOPICS);
-                long global[NTOPICS];
+                long global_topic_count[NTOPICS];
                 long doc_topic_count[NTOPICS];
                 long word_topic_count[NTOPICS];
 
                 for(size_t t = 0; t < NTOPICS; t++){
-                    global[t] = 0;
+                    global_topic_count[t] = 0;
                     word_topic_count[t] = 0;
                     doc_topic_count[t] = 0;
                 }
@@ -381,14 +381,14 @@ public:
      			     
 			                --doc_topic_count[asg];
        			            --word_topic_count[asg];
-        		            --global[asg];
+        		            --global_topic_count[asg];
      			        }
 
 		                // compute probability of multinomial
 		                for(size_t t = 0; t < NTOPICS; ++t){
 		                    const double n_dt = std::max(long(doc_topic_count[t]), long(0));
 		                    const double n_wt = std::max(long(word_topic_count[t]), long(0));
-		                    const double n_t  = std::max(long(global[t]), long(0));
+		                    const double n_t  = std::max(long(global_topic_count[t]), long(0));
 		                    prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
 		  		        }
 
@@ -396,7 +396,7 @@ public:
 		                asg = multinomial(prob);
 		                ++doc_topic_count[asg];
 		  			    ++word_topic_count[asg];
-		  			    ++global[asg];
+		  			    ++global_topic_count[asg];
 		            }
 
                     // pass new assignment to current outedge data
@@ -424,20 +424,13 @@ public:
 
         }else{// superstep != 0
 
-            // volt to halt
-            if(getSuperstep() >= 3){
-                aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
-				    printf("global_topic_count[] = %ld\n", aggr.count[1]);
-                //printf("likelihood = %lf\n", aggr.likelihood);
-                if(1)
-                    voteToHalt(); return;   
-            }
-
             // get old vertex value
             val = getValue();
-            // superstep odd: doc recv assign, send factor to word
+
+            // superstep odd: doc vertex work
 		    if(getSuperstep() % 2 == 1){
        
+                // doc recv assign, send factor to word
                 if(val.flag==IS_DOC){
 
                     //receive new assignment from word vertex
@@ -462,18 +455,125 @@ public:
               
                 }
 
+                // compute aggregator
+	            accumulateAggr(0, &val);
+
 		    }
-            // word recv message from doc,
-            // update assignment of edge data
-            // and send new assignment to doc
+
+            // superstep even : word vertex work
 		    if(getSuperstep() % 2 == 0){
 
+                // check aggregator result and judge if voletohalt
+				aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
+                long global_topic_count[NTOPICS];
+                for(size_t t; t < NTOPICS; t++){
+                    global_topic_count[t] = aggr.count[t];
+                }
+                double likelihood = aggr.likelihood;
+				if(int64_t(getVertexId()) == int64_t(0)){
+				    for(size_t t = 0; t < NTOPICS; t++){
+				        printf("global_topic_count[%zu] = %ld\n", t, global_topic_count[t]);
+				    }
+				    printf("likelihood = %lf\n", likelihood);
+				}
+
+				// volt to halt
+				if(getSuperstep() > 3){// if likelihood < ESP
+				    voteToHalt(); return;   
+				}
 
 
+                // word recv message from doc,
+                // update assignment of edge data
+                // and send new assignment to doc
+                if(val.flag == IS_WORD){
+
+                    // get global topic count from aggregator
+                    aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
+                    long word_topic_count[NTOPICS];
+                    for(size_t t; t < NTOPICS; t++){
+                        word_topic_count[t] = val.factor[t];
+                    }
+
+                    // each msg from one doc
+                    // update the edge which connect current doc and this word
+                    for (;!pmsgs->done();pmsgs->next()){
+
+                         message_type recv = pmsgs->getValue();
+                         unsigned long long vid_from = recv.vid;
+                         long doc_topic_count[NTOPICS];
+                         for(size_t t; t < NTOPICS; t++){
+				             word_topic_count[t] = recv.factor[t];
+                         }
+
+                         OutEdgeIterator out_edge_it = getOutEdgeIterator();
+                         //iterate outedges to find the edge connect to current doc
+                         for (; !out_edge_it.done(); out_edge_it.next()){
+
+                              unsigned long long vid_to = out_edge_it.target();
+                              // if the edge is the one connect to current doc
+                              // update the assignment on this edge    
+                              // send message to current doc
+                              if(vid_from == vid_to){ // break for
+
+                                // point to edge data
+                                Edge* edge = (Edge *)(out_edge_it.current());
+                                edge_data* p = (edge_data *)(edge->weight);
+                                vector_type assignment = p->assignment;
+
+                                // probability of multinomial
+                                std::vector<double> prob(NTOPICS);
+
+						        for(size_t t = 0; t < assignment.size(); t++){
+
+						            // asg is a referenc of assignment[t]
+						            long& asg = assignment[t];
+                                    if(asg != NULL_TOPIC){
+			                            --doc_topic_count[asg];
+       			                        --word_topic_count[asg];
+        		                        --global_topic_count[asg];
+                			        }
+
+								    // compute probability of multinomial
+								    for(size_t t = 0; t < NTOPICS; ++t){
+								        const double n_dt = std::max(long(doc_topic_count[t]), long(0));
+								        const double n_wt = std::max(long(word_topic_count[t]), long(0));
+								        const double n_t  = std::max(long(global_topic_count[t]), long(0));
+								        prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
+					  		        }
+
+						            // get new asg using random multinomial
+								    asg = multinomial(prob);
+								    ++doc_topic_count[asg];
+					  			    ++word_topic_count[asg];
+					  			    ++global_topic_count[asg];
+
+								}
+
+						        // pass new assignment to current outedge data
+						        for(size_t t = 0; t < assignment.size(); t++)
+						            (p->assignment)[t] = assignment[t];
+
+						        // send new assignment to doc vertex
+							    message_type ms_send;
+								ms_send.vid = getVertexId();
+								for(size_t t = 0; t < NTOPICS; t++){
+						            ms_send.factor[t] = 0;
+						        }
+								for(size_t t = 0; t < assignment.size();t++){
+						            ms_send.factor[assignment[t]]++;
+						        }
+
+						        sendMessageTo(vid_to, ms_send);    
+                                break; // end of outedge iterator
+                              }
+                         }
+                    }
+                }
 		    }
         }
 
-	    accumulateAggr(0, &val);
+        // update vertex data
 	    * mutableValue() = val;
 
     }
