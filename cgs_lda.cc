@@ -25,7 +25,7 @@
  * Dirichlet Allocation (LDA) model using graphlite API.
  *
  */
-
+#include <iostream>
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -50,6 +50,7 @@
 #define EPS 1e-6
 /**
  * the total number of topics to uses
+ * the single machine with 8 worker can only set NTOPICS as 10
  */
 #define NTOPICS size_t(10)
 
@@ -117,7 +118,7 @@ typedef struct
 {
     //int a;
     long factor[NTOPICS];
-    long long vid;//Vertex ID
+    unsigned long long vid;//Vertex ID
 }message_type;
 
 /** VERTEX_CLASS_NAME(InputFormatter) can be kept as is */
@@ -352,8 +353,7 @@ public:
 
             // if current vertex is word, assign topic to edge
             // and send edge data to to doc
-            if(is_word()){
-
+            if(val.flag == IS_WORD){
                 // initialize edge assignment to NULL_TOPIC
                 init_edge_topic();
 
@@ -369,12 +369,12 @@ public:
                 }
                 OutEdgeIterator out_edge_it = getOutEdgeIterator();
                 //iterate all outedges and compute assignment topic
-                for ( ; !out_edge_it.done(); out_edge_it.next()){ 
+                for ( ; !out_edge_it.done(); out_edge_it.next()){
                     // temp variable assignment
                     // need to be passed to edge data
                     vector_type assignment = out_edge_it.getValue().assignment;
                     // compute assigment of one outedge
-                    for(size_t t = 0; t < NTOPICS; t++){
+                    for(size_t t = 0; t < assignment.size(); t++){
                         // asg is a referenc of assignment[t]
                         long& asg = assignment[t];
                         if(asg != NULL_TOPIC){
@@ -412,11 +412,12 @@ public:
 		            for(size_t t = 0; t < NTOPICS; t++){
                         ms_send.factor[t] = 0;
                     }
-		            for(size_t t = 0; t < NTOPICS;t++){
+		            for(size_t t = 0; t < assignment.size();t++){
                         ms_send.factor[assignment[t]]++;
                     }
-	                // sendMessageTo(vid_to, ms_send);
+
                     sendMessageTo(vid_to, ms_send);
+
                 }
                    
             }
@@ -426,9 +427,7 @@ public:
             // volt to halt
             if(getSuperstep() >= 3){
                 aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
-		        for(size_t t = 0; t < NTOPICS; t++){
-                     //printf("global_topic_count[%zu] = %ld\n", t, aggr.count[t]);
-                }
+				    printf("global_topic_count[] = %ld\n", aggr.count[1]);
                 //printf("likelihood = %lf\n", aggr.likelihood);
                 if(1)
                     voteToHalt(); return;   
@@ -436,10 +435,10 @@ public:
 
             // get old vertex value
             val = getValue();
-
+            // superstep odd: doc recv assign, send factor to word
 		    if(getSuperstep() % 2 == 1){
-
-                if(is_doc()){
+       
+                if(val.flag==IS_DOC){
 
                     //receive new assignment from word vertex
                     for (;!pmsgs->done(); pmsgs->next()){	
@@ -452,16 +451,24 @@ public:
 
                     // send doc vertex factor to word
                     message_type ms_send;
+                    ms_send.vid = getVertexId();
                     for(size_t t = 0; t < NTOPICS;t++){
                         ms_send.factor[t] = val.factor[t];
                     }
+                    // printf("%ld\n",  ms_send.factor[1]);
                     // too many out messages, can't use sendall
-                    // consider parse message_tyep to json
+                    // consider add worker or compress message
                     sendMessageToAllNeighbors(ms_send);
+              
                 }
-		    }
 
+		    }
+            // word recv message from doc,
+            // update assignment of edge data
+            // and send new assignment to doc
 		    if(getSuperstep() % 2 == 0){
+
+
 
 		    }
         }
@@ -469,14 +476,6 @@ public:
 	    accumulateAggr(0, &val);
 	    * mutableValue() = val;
 
-    }
-    // judge if a vertex is doc
-    int is_doc(){
-        return (getValue().flag==IS_DOC)? true:false;
-    }
-    // judge if a vertex is word
-    int is_word(){
-        return (getValue().flag==IS_WORD)? true:false;
     }
     int64_t get_outdegree(){
         int64_t rt = getOutEdgeIterator().size();
@@ -538,7 +537,6 @@ public:
 		cumsum += (prb[++ind]/sum));
 		return ind;
     }
-    
 
 };
 
