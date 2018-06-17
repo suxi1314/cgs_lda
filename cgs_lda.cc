@@ -193,7 +193,7 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n = sprintf(s, "%lld:%d:%lld:%ld\n", vid, value.flag, value.outdegree, value.factor[0]);
+            int n = sprintf(s, "%lld:%d:%lld:%ld\n", (unsigned long long)vid, value.flag, (unsigned long long)value.outdegree, value.factor[0]);
             writeNextResLine(s, n);
         }
     }
@@ -296,19 +296,23 @@ public:
         for(int t = 0; t < NTOPICS; t++) m_local.count[t] += factor[t];
         // likelihood
         int flag = val.flag;
+        double lik_words_given_topics = 0.0;
+        double lik_topics = 0.0;
         if(flag==IS_WORD){
             for(size_t t = 0; t < NTOPICS; ++t) {
-                m_local.lik_words_given_topics += BETA_LGAMMA(long(factor[t]));
-                // printf("%ld %lf\n", long(factor[t]), m_local.lik_words_given_topics);
+                lik_words_given_topics += BETA_LGAMMA(long(factor[t]));
+                // printf("%ld %lf\n", long(factor[t]), lik_words_given_topics);
             }
         }else{
             double ntokens_in_doc = 0;
             for(size_t t = 0; t < NTOPICS; ++t) {
-                m_local.lik_topics += ALPHA_LGAMMA(long(factor[t]));
+                lik_topics += ALPHA_LGAMMA(long(factor[t]));
                 ntokens_in_doc += long(factor[t]);
             }
-            m_local.lik_topics -= lgamma(ntokens_in_doc + NTOPICS * ALPHA);
+            lik_topics -= lgamma(ntokens_in_doc + NTOPICS * ALPHA);
         }
+        m_local.lik_words_given_topics += lik_words_given_topics;
+        m_local.lik_topics += lik_topics;
 
     }
 
