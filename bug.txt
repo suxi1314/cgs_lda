@@ -1,7 +1,8 @@
 # can't change items of vertex_data.factor in compute, it seems read-only.
 Can use push_back push only once.
 Infer the error lies in mutable.
-This problem appears when defining vertex_data as truct with constructor.
+This problem appears when defining vertex_data as struct with constructor.
 While defining vertex_data as typedef struct with vector.resize works?
-Maybe in GraphLite, there is some thing like:
+Maybe in GraphLite, there is something like:
 Vertex_data* v1, v2;
+The template doesn't support variable container.

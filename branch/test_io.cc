@@ -1,5 +1,5 @@
 /**
- * @file cgs_lda.cc
+ * @file test_io.cc
  * @author  Shanshan Wang, Xiaoyang Han, Qiancheng Wei
  * @version 0.2
  *
@@ -21,8 +21,8 @@
  * 
  * @section DESCRIPTION
  * 
- * This file implements the Collapsed Gibbs Sampler (CGS) for the Latent 
- * Dirichlet Allocation (LDA) model using graphlite API.
+ * This is a simple test of message send test.
+ * it proves that NTOPICS can't be more than 15.
  *
  */
 #include <iostream>
@@ -260,20 +260,7 @@ public:
 
         for (ResultIterator r_iter; ! r_iter.done(); r_iter.next() ) {
             r_iter.getIdValue(vid, &value);
-            int n;
-
-            std::string factor = "";
-            for(size_t t = 0; t < NTOPICS; t++){
-                 char temp[20];
-                 sprintf(temp, "%-10lld", (unsigned long long)(value.factor[t]));
-                 factor += temp;
-            }
-            if(value.flag == IS_DOC){
-                n = sprintf(s, "%-5s:%-10lld: %s\n", "doc", (unsigned long long)vid, factor.c_str());
-            }else{
-                int64_t id = std::max(vid - int64_t(NDOCS), int64_t(0));
-                n = sprintf(s, "%-5s:%-10lld: %s\n", "word", (unsigned long long)id, factor.c_str());
-            }
+            int n =  sprintf(s, "abc\n");
             writeNextResLine(s, n);
         }
     }
@@ -381,258 +368,39 @@ public:
 class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, message_type> {
 public:
     void compute(MessageIterator* pmsgs) {
+        if(getSuperstep() >1){
+            voteToHalt();
+            return;
+        }
 
-        vertex_data val;
-
-        // superstep 0 initialize variables
         if(getSuperstep() == 0){
-            val.factor.assign(NTOPICS, 0);
-            val.outdegree = get_outdegree();
-            if(getVertexId() < NDOCS) val.flag = 1;
-            else val.flag = -1;
-            assert(getVertexId() < NVERTICES);
 
-            // if current vertex is word, assign topic to edge
-            // and send edge data to to doc
-            if(val.flag == IS_WORD){
-                // initialize edge assignment to NULL_TOPIC
-                init_edge_topic();
+           if(getVertexId() < NDOCS){
 
-                //vector_type global_topic_count(NTOPICS, 0);
+               message_type ms_send;
+               ms_send.vid = getVertexId();
+               for(size_t t = 0; t < NTOPICS;t++){
+                   ms_send.factor[t] = t;
+               }
+               sendMessageToAllNeighbors(ms_send);
+           }
 
-                vector_type& word_topic_count = val.factor;
-
-                OutEdgeIterator out_edge_it = getOutEdgeIterator();
-                //iterate all outedges and compute assignment topic
-                for ( ; !out_edge_it.done(); out_edge_it.next()){
-                    std::vector<double> prob(NTOPICS);
-                    vector_type doc_topic_count(NTOPICS, 0);
-                    // temp variable assignment
-                    // need to be passed to edge data
-                    vector_type assignment = out_edge_it.getValue().assignment;
-                    // compute assigment of one outedge
-                    for(size_t t = 0; t < assignment.size(); t++){
-                        // asg is a referenc of assignment[t]
-                        long& asg = assignment[t];
-
-		                // compute probability of multinomial
-		                for(size_t t = 0; t < NTOPICS; ++t){
-
-		                    const double n_dt = std::max(long(doc_topic_count[t]), long(0));
-		                    const double n_wt = std::max(long(word_topic_count[t]), long(0));
-		                    const double n_t  = std::max(long(global_topic_count[t]), long(0));
-		                    prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
-                            
-		  		        }
-                        // get new asg using random multinomial
-		                asg = multinomial(prob);
-		                ++doc_topic_count[asg];
-		  			    ++word_topic_count[asg];
-		  			    ++global_topic_count[asg];
-		            }
-
-                    // pass new assignment to current outedge data
-                    Edge* edge = (Edge *)(out_edge_it.current());
-                    edge_data* p = (edge_data *)(edge->weight);
-                    for(size_t t = 0; t < assignment.size(); t++)
-                        (p->assignment)[t] = assignment[t];
-
-                    // send new assignment to doc vertex
-                    unsigned long long vid_to = out_edge_it.target();
-	                message_type ms_send;
-		            ms_send.vid = getVertexId();
-		            for(size_t t = 0; t < NTOPICS;t++){
-                        ms_send.factor[t] = doc_topic_count[t];
-                    }
-                    sendMessageTo(vid_to, ms_send);
-
-
-                }
-                   
-            }
-
-        }else{// superstep != 0
-
-            // get old vertex value
-            val = getValue();
-
-            // superstep odd: doc vertex work
-		    if(getSuperstep() % 2 == 1){
-       
-                // doc recv assign, send factor to word
-                if(val.flag==IS_DOC){
-                    //receive new assignment from word vertex
-                    int count_change = 0;
-                    for (;!pmsgs->done(); pmsgs->next()){	
-                        // add new assignment to old count factor
-                        for(size_t t = 0 ; t < NTOPICS; t++){
-			     			val.factor[t] += pmsgs->getValue().factor[t];
-                
-                        }
-                    }  
-
-                    // send doc vertex factor to word
-                    message_type ms_send;
-                    ms_send.vid = getVertexId();
-                    for(size_t t = 0; t < NTOPICS;t++){
-                        ms_send.factor[t] = val.factor[t];
-                    }
-                    // too many out messages, can't use sendall
-                    // consider add worker or compress message
-
-                    sendMessageToAllNeighbors(ms_send);
-                }
-
-                // compute aggregator
-	            accumulateAggr(0, &val);
-
-		    }
-
-            // superstep even : word vertex work
-		    if(getSuperstep() % 2 == 0){
-
-                // check aggregator result and judge if voletohalt
-				aggr_type* aggr = (aggr_type *)getAggrGlobal(0);
-                double likelihood = aggr->likelihood;
-                if(int64_t(getVertexId())==int64_t(0)){
-                    printf("lik_words_given_topics = %e\n", aggr->lik_words_given_topics);
-                    printf("lik_topics = %e\n", aggr->lik_topics);
-                    printf("likelihood = %e\n", aggr->likelihood);
-                }
-
-
-               // volt to halt
-			    if(getSuperstep() > 800){// if likelihood < ESP
-			        voteToHalt(); return;   
-			    }
-
-                // word recv message from doc,
-                // update assignment of edge data
-                // and send new assignment to doc
-                if(val.flag == IS_WORD){
-
-                    vector_type& word_topic_count = val.factor;
-                    long count_msg = 0;
-                    // each msg from one doc
-                    // update the edge which connect current doc and this word
-                    for (;!pmsgs->done();pmsgs->next()){
-
-                         unsigned long long vid_from = pmsgs->getValue().vid;
-                         vector_type doc_topic_count(NTOPICS, 0);
-                         vector_type doc_topic_change(NTOPICS, 0);
-                         for(size_t t; t < NTOPICS; t++){
-				             doc_topic_count[t] = pmsgs->getValue().factor[t];
-                         }
-                         
-                         OutEdgeIterator out_edge_it = getOutEdgeIterator();
-                         //iterate outedges to find the edge connect to current doc
-                         for (; !out_edge_it.done(); out_edge_it.next()){
-
-                              unsigned long long vid_to = out_edge_it.target();
-                              // if the edge is the one connect to current doc
-                              // update the assignment on this edge    
-                              // send message to current doc
-                              if(vid_from == vid_to){ // break for
-                                count_msg++;                                
-
-                                // point to edge data
-                                Edge* edge = (Edge *)(out_edge_it.current());
-                                edge_data* p = (edge_data *)(edge->weight);
-                                vector_type assignment = p->assignment;
-
-                                // probability of multinomial
-                                std::vector<double> prob(NTOPICS);
-
-						        for(size_t t = 0; t < assignment.size(); t++){
-
-						            // asg is a referenc of assignment[t]
-						            long& asg = assignment[t];
-
-		                            --doc_topic_count[asg];
-                                    --doc_topic_change[asg];
-   			                        --word_topic_count[asg];
-    		                        --global_topic_count[asg];
-                                  
-								    // compute probability of multinomial
-								    for(size_t t = 0; t < NTOPICS; ++t){
-								        const double n_dt = std::max(long(doc_topic_count[t]), long(0));
-								        const double n_wt = std::max(long(word_topic_count[t]), long(0));
-								        const double n_t  = std::max(long(global_topic_count[t]), long(0));
-								        prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
-					  		        }
-
-						            // get new asg using random multinomial
-								    asg = multinomial(prob);
-								    ++doc_topic_count[asg];
-                                    ++doc_topic_change[asg];
-					  			    ++word_topic_count[asg];
-					  			    ++global_topic_count[asg];
-
-
-								}
-
-						        // pass new assignment to current outedge data
-						        for(size_t t = 0; t < assignment.size(); t++)
-						            (p->assignment)[t] = assignment[t];
-
-						        // send new assignment to doc vertex
-							    message_type ms_send;
-								ms_send.vid = getVertexId();
-								for(size_t t = 0; t < NTOPICS;t++){
-						            ms_send.factor[t] = doc_topic_change[t];
-						        }
-
-						        sendMessageTo(vid_to, ms_send);
-                                break; // end of outedge iterator
-                              }
-                         }
-                         
-                    }
-                    assert( count_msg == val.outdegree);
-                }
-		    }
         }
 
-        // update vertex data
-	    * mutableValue() = val;
+        if(getSuperstep() == 1){
 
-    }
-    int64_t get_outdegree(){
-        int64_t rt = getOutEdgeIterator().size();
-        return rt;
-    }
+           if(getVertexId() > NDOCS){
 
-    void init_edge_topic(){
-        OutEdgeIterator outEdges = getOutEdgeIterator();
-   
-        for ( ; ! outEdges.done(); outEdges.next() ) {
-
-            Edge* edge = (Edge *)(outEdges.current());
-            edge_data* p = (edge_data *)(edge->weight);
-            p->assignment.assign(p->ntoken, NULL_TOPIC);
+               message_type ms_send;
+               ms_send.vid = getVertexId();
+               for(size_t t = 0; t < NTOPICS;t++){
+                   ms_send.factor[t] = t;
+               }
+               sendMessageToAllNeighbors(ms_send);
+           }
+  
         }
-        return ;
-    }
 
-
-    // copy from graphlab, generate a random number from a multinomial
-    size_t multinomial(const std::vector<double>& prb) 
-    {
-		std::default_random_engine generator;
-	  	std::uniform_real_distribution<double> distribution(0.0,1.0);
-		assert(prb.size()>0);
-		if (prb.size() == 1) return 0;
-		double sum(0);
-		for(size_t i = 0; i < prb.size(); ++i){
-			assert(prb[i]>=0); 
-			sum += prb[i];
-		}
-		assert(sum>0);
-		const double rnd(distribution(generator));
-
-		size_t ind = 0;
-		for(double cumsum(prb[ind]/sum); rnd > cumsum && (ind+1) < prb.size(); cumsum += (prb[++ind]/sum));
-		return ind;
     }
 
 };
