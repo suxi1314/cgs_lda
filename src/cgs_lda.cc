@@ -57,7 +57,6 @@
  * the single machine with 8 worker can only set NTOPICS as 10
  */
 #define NTOPICS size_t(10)
-
 /**
  * the alpha parameter determines the sparsity of topics for each document.
  */
@@ -442,9 +441,6 @@ public:
                     unsigned long long vid_to = out_edge_it.target();
 	                message_type ms_send;
 		            ms_send.vid = getVertexId();
-		            for(size_t t = 0; t < NTOPICS; t++){
-                        ms_send.factor[t] = 0;
-                    }
 		            for(size_t t = 0; t < assignment.size();t++){
                         ms_send.factor[t] = doc_topic_count[t];
                     }
@@ -582,9 +578,6 @@ public:
 						        // send new assignment to doc vertex
 							    message_type ms_send;
 								ms_send.vid = getVertexId();
-								for(size_t t = 0; t < NTOPICS; t++){
-						            ms_send.factor[t] = 0;
-						        }
 								for(size_t t = 0; t < assignment.size();t++){
 						            ms_send.factor[t] = doc_topic_change[t];
 						        }
@@ -662,16 +655,12 @@ public:
         setHost(4, "localhost", 1451);
 */
 
-        setNumHosts(9);
-        setHost(0, "localhost", 1411);
-        setHost(1, "localhost", 1421);
-        setHost(2, "localhost", 1431);
-        setHost(3, "localhost", 1441);
-        setHost(4, "localhost", 1451);
-        setHost(5, "localhost", 1461);
-        setHost(6, "localhost", 1471);
-        setHost(7, "localhost", 1481);
-        setHost(8, "localhost", 1491);
+        int nworkers = 9;
+        setNumHosts(nworkers);
+        for(int i = 0; i < nworkers; i++){
+           setHost(i, "localhost", 1411 + i*10);
+        }
+
 
         if (argc < 3) {
            printf ("Usage: %s <input path> <output path>\n", argv[0]);
