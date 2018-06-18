@@ -1,0 +1,34 @@
+## 内核心和编译环境
+Linux version 4.15.0-23-generic (buildd@lgw01-amd64-055) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #25-Ubuntu SMP Wed May 23 18:02:16 UTC 2018
+
+## cpu
+架构：           x86_64
+CPU 运行模式：   32-bit, 64-bit
+字节序：         Little Endian
+CPU:             4
+在线 CPU 列表：  0-3
+每个核的线程数： 2
+每个座的核数：   2
+座：             1
+NUMA 节点：      1
+厂商 ID：        GenuineIntel
+CPU 系列：       6
+型号：           58
+型号名称：       Intel(R) Core(TM) i7-3520M CPU @ 2.90GHz
+步进：           9
+CPU MHz：        1456.488
+CPU 最大 MHz：   3600.0000
+CPU 最小 MHz：   1200.0000
+BogoMIPS：       5786.69
+虚拟化：         VT-x
+L1d 缓存：       32K
+L1i 缓存：       32K
+L2 缓存：        256K
+L3 缓存：        4096K
+NUMA 节点0 CPU： 0-3
+
+## 内存(以M为单位)
+              总计         已用        空闲      共享    缓冲/缓存    可用
+内存：       11908        2196        7073         340        2637        9253
+交换：        2047           0        2047
+
