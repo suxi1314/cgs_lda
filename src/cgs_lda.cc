@@ -37,13 +37,11 @@
 #include <boost/atomic.hpp>
 #include <random>
 #include <unistd.h>
+#include <vector>
 
 #include "GraphLite.h"
 
 #define DEBUG // run on vm
-
-#include <vector>
-
 
 
 /**
@@ -441,7 +439,7 @@ public:
                     unsigned long long vid_to = out_edge_it.target();
 	                message_type ms_send;
 		            ms_send.vid = getVertexId();
-		            for(size_t t = 0; t < assignment.size();t++){
+		            for(size_t t = 0; t < NTOPICS;t++){
                         ms_send.factor[t] = doc_topic_count[t];
                     }
                     sendMessageTo(vid_to, ms_send);
@@ -578,7 +576,7 @@ public:
 						        // send new assignment to doc vertex
 							    message_type ms_send;
 								ms_send.vid = getVertexId();
-								for(size_t t = 0; t < assignment.size();t++){
+								for(size_t t = 0; t < NTOPICS;t++){
 						            ms_send.factor[t] = doc_topic_change[t];
 						        }
 
