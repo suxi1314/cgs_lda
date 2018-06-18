@@ -1,0 +1,3865 @@
+worker run
+parseCmdArg
+loadUserFile
+init
+readInput
+performSuperstep
+sent WM_BEGIN
+Sender: connect all server success
+Receiver: accept all client success
+received MW_BEGIN
+-----------------------------------------
+superstep: 0
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 1
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 2
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 3
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 4
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 5
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 6
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 7
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 8
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 9
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 10
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 11
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 12
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 13
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 14
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 15
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 16
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 17
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 18
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 19
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 20
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 21
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 22
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 23
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 24
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 25
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 26
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 27
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 28
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 29
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 30
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 31
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 32
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 33
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 34
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 35
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 36
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 37
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 38
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 39
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 40
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 41
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 42
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 43
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 44
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 45
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 46
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 47
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 48
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 49
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 50
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 51
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 52
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 53
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 54
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 55
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 56
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 57
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 58
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 59
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 60
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 61
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 62
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 63
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 64
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 65
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 66
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 67
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 68
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 69
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 70
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 71
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 72
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 73
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 74
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 75
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 76
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 77
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 78
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 79
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 80
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 81
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 82
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 83
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 84
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 85
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 86
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 87
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 88
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 89
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 90
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 91
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 92
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 93
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 94
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 95
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 96
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 97
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 98
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 99
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 100
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 101
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 102
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 103
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 104
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 105
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 106
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 107
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 108
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 109
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 110
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 111
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 112
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 113
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 114
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 115
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 116
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 117
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 118
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 119
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 120
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 121
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 122
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 123
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 124
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 125
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 126
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 127
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 128
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 129
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 130
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 131
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 132
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 133
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 134
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 135
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 136
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 137
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 138
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 139
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 140
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 141
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 142
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 143
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 144
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 145
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 146
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 147
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 148
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 149
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 150
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 151
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 152
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 153
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 154
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 155
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 156
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 157
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 158
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 159
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 160
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 161
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 162
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 163
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 164
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 165
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 166
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 167
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 168
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 169
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 170
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 171
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 172
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 173
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 174
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 175
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 176
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 177
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 178
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 179
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 180
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 181
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 182
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 183
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 184
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 185
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 186
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 187
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 188
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 189
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 190
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 191
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 192
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 193
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 194
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 195
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 196
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 197
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 198
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 199
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 200
+sent WW_NODEMSGLIST, 5459 msgs to worker[1]
+sent WW_NODEMSGLIST, 5480 msgs to worker[2]
+sent WW_NODEMSGLIST, 5518 msgs to worker[3]
+sent WW_NODEMSGLIST, 5677 msgs to worker[5]
+sent WW_NODEMSGLIST, 5916 msgs to worker[6]
+sent WW_NODEMSGLIST, 5617 msgs to worker[7]
+sent WW_NODEMSGLIST, 5463 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 201
+sent WW_NODEMSGLIST, 5319 msgs to worker[1]
+sent WW_NODEMSGLIST, 5680 msgs to worker[2]
+sent WW_NODEMSGLIST, 5488 msgs to worker[3]
+sent WW_NODEMSGLIST, 5955 msgs to worker[5]
+sent WW_NODEMSGLIST, 6240 msgs to worker[6]
+sent WW_NODEMSGLIST, 5873 msgs to worker[7]
+sent WW_NODEMSGLIST, 5643 msgs to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_NEXTSSSTART
+-----------------------------------------
+superstep: 202
+sent WW_FINISHSENDNODEMSG to worker[1]
+sent WW_FINISHSENDNODEMSG to worker[2]
+sent WW_FINISHSENDNODEMSG to worker[3]
+sent WW_FINISHSENDNODEMSG to worker[5]
+sent WW_FINISHSENDNODEMSG to worker[6]
+sent WW_FINISHSENDNODEMSG to worker[7]
+sent WW_FINISHSENDNODEMSG to worker[8]
+received all WW_NODEMSGLIST && WW_FINISHNODEMSG
+sent WM_CURSSFINISH
+received MW_END
+sent WM_END
+writeOutput
+terminate
+Receiver: closeAllSocket
+Sender: closeAllSocket
