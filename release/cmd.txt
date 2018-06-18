@@ -1,0 +1,7 @@
+. bin/setenv
+cd engine
+make
+cd example
+make
+start-graphlite example/cgs_lda.so lda-input/testgraph_8w lda-output/testgraph_4w
+start-graphlite example/cgs_lda.so lda-input/doc_word_count_8w lda-output/doc_word_count
