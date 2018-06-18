@@ -25,6 +25,8 @@
  * Dirichlet Allocation (LDA) model using graphlite API.
  *
  */
+
+
 #include <iostream>
 #include <stdio.h>
 #include <string.h>
@@ -40,100 +42,118 @@
 #include <unistd.h>
 #include <vector>
 
-
-
 #include "GraphLite.h"
 
 #define DEBUG // run on vm
 
 
 /**
-* change VERTEX_CLASS_NAME(name) definition to use a different class name 
+* \brief Change VERTEX_CLASS_NAME(name) definition to use a different class name 
 */
 #define VERTEX_CLASS_NAME(name) cgs_lda##name
 
 #define EPS 1e-6
 /**
- * the total number of topics to uses
- * the single machine with 8 worker can only set NTOPICS as 10
+ * \brief Define the total number of topics 
+ * If we use a single machine with 8 worker, we can only set NTOPICS as 10
  */
 #define NTOPICS size_t(10)
+
 /**
- * the alpha parameter determines the sparsity of topics for each document.
+ * \brief number of docs, words, vertices
+ *
  */
-double ALPHA = 1.0;
-
-/**
- * the Beta parameter determines the sparsity of words in each document.
- */
-double BETA = 0.1;
-
-/**
- * We use the factor type in aggregator, so we define an operator+=
- */
-
-// We require a null topic to represent the topic assignment for tokens that have not yet been assigned.
-#define NULL_TOPIC long(-1)
-
-/**
-* The assignment type is used on each edge to store the
-* assignments of each token.  There can be several occurrences of the
-* same word in a given document and so a vector is used to store the
-* assignments of each occurrence.
-*/
-
-#define IS_WORD -1
-#define IS_DOC 1
-#define IS_NULL 0
-
-
-typedef std::vector<long> vector_type;
-
-
-/**
-* The vertex data represents each word and doc in the corpus and contains 
-* the counts of tokens(word,doc pair) in each topic. 
-* change vertex_data from struct to typedef struct for sume bug of graphlite.
-*/
-typedef struct vertexData{
-    // The count of tokens in each topic.
-    vector_type factor; // a vector of topic count
-    int flag; // judge is word or doc
-    int64_t outdegree; // number of outdegree for debug
-
-}vertex_data;
-
-
 unsigned long long NDOCS;
 unsigned long long NWORDS;
 unsigned long long NVERTICES;
 
 /**
-* The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
+ * \brief Define the flag of word or doc vertex
+ */
+#define IS_WORD -1
+#define IS_DOC 1
+#define IS_NULL 0
+
+
+/**
+ * \brief The alpha parameter determines the sparsity of topics for each document.
+ */
+double ALPHA = 1.0;
+
+/**
+ * \brief The Beta parameter determines the sparsity of words in each document.
+ */
+double BETA = 0.1;
+
+
+/**
+ * \brief We need a null topic to represent the topic assignment for tokens 
+ * that have not yet been assigned.
+ */
+#define NULL_TOPIC long(-1)
+
+/**
+* \brief The vector type is used on each edge to store the
+* assignments of each token.  There can be several occurrences of the
+* same word in a given document and so a vector is used to store the
+* assignments of each occurrence. It is used in edge_data.
+* The vector type is also used to store the counts of tokens in
+* each topic for words, documents, and assignments on vertices.
+* It is used in vertex_data.
+*/
+typedef std::vector<long> vector_type;
+
+
+/**
+* \brief The vertex data represents each word and doc in the corpus and contains 
+* the counts of tokens(word,doc pair) in each topic. 
+* change vertex_data from struct to typedef struct for sume bug of graphlite.
+*/
+typedef struct vertexData{
+    // The count of tokens in each topic.
+    vector_type factor; 
+    // judge vertex is word or doc
+    int flag; 
+    // number of outdegree for debug
+    int64_t outdegree; 
+
+}vertex_data;
+
+
+/**
+* \brief The edge data represents individual tokens (word,doc) pairs and their assignment to topics.
 */
 typedef struct edgeData{
+    // occurence of a word in a doc
     size_t ntoken;
     // The assignment of all tokens
     vector_type assignment;
 }edge_data;
 
-
-typedef struct
-{
-    //int a;
+/**
+* \brief The messageData is contains an array and a number, the array can't be defined as a vector.
+*/
+typedef struct messageData{
+    // a vector of count
     long factor[NTOPICS];
     unsigned long long vid;//Vertex ID
 }message_type;
 
-// global topic count
+/**
+ * \brief global topic count is atomic, because it can be read and write for all vertices in the same worker.
+ */
 using boost::atomic;
 boost::atomic<long> global_topic_count[NTOPICS] = {};
 
-
+/**
+ * \brief Data type of aggregator.
+ */
 typedef struct aggregator_struct{
+    // global topic count
     long count[NTOPICS];
     double lik_words_given_topics;
     double lik_topics;
+    // likelihood
     double likelihood;
 }aggr_type;
 
@@ -165,11 +185,22 @@ public:
 
 };
 
-
+/**
+ * \brief log gamma for alpha and beta. Attention that these should be 
+ * initialized on load graph.
+ */
 log_gamma ALPHA_LGAMMA;
 log_gamma BETA_LGAMMA;
 
-/** VERTEX_CLASS_NAME(InputFormatter) can be kept as is */
+/**
+ * \brief VERTEX_CLASS_NAME(InputFormatter) can be kept as is
+ */
+/**
+* \brief Our graph is in this format:
+* 1st row: m_total_vertex NDOCS NWORDS
+* 2nd row: m_total_edge
+* other row: vid vid weight.ntoken
+*/
 class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
 public:
     int64_t getVertexNum() {
@@ -210,10 +241,7 @@ public:
 
         const char *line= getEdgeLine();
 
-        // Note: modify this if an edge weight is to be read
-        //       modify the 'weight' variable
-
-        // read edge weight
+        // read edge weight as edge_data
         sscanf(line, "%lld %lld %zu", &from, &to, &(weight.ntoken));
 
         addEdge(from, to, &weight);
@@ -223,10 +251,7 @@ public:
         for (int64_t i = 1; i < m_total_edge; ++i) {
             line= getEdgeLine();
 
-            // Note: modify this if an edge weight is to be read
-            //       modify the 'weight' variable
-
-            // read edge weight
+            // read edge weight as edge_data
             sscanf(line, "%lld %lld %zu", &from, &to, &(weight.ntoken));
 
             if (last_vertex != from) {
@@ -241,7 +266,7 @@ public:
         addVertex(last_vertex, &value, outdegree);
 
     }
-
+    // initialize log gamma of alpha and beta
     void init_LGAMMA(){
         ALPHA_LGAMMA.init(ALPHA, 100000);
         BETA_LGAMMA.init(BETA, 100000);
@@ -249,8 +274,12 @@ public:
 
 
 };
-/** VERTEX_CLASS_NAME(OutputFormatter): 
-his is where the output is generated */
+/** 
+ * \brief VERTEX_CLASS_NAME(OutputFormatter): his is where the output is generated .
+ */
+/**
+ * \brief Output of docs and words is different. Output doc-topic matrix or word-topic matrix.
+ */
 class VERTEX_CLASS_NAME(OutputFormatter): public OutputFormatter {
 public:
     void writeResult() {
@@ -282,8 +311,13 @@ public:
 
 
 
-/** VERTEX_CLASS_NAME(Aggregator): you can implement other types of aggregation */
-// the <type name> is the type of aggregator result value
+/**
+ * \brief VERTEX_CLASS_NAME(Aggregator): you can implement other types of aggregation 
+ * the <type> is the type name of aggregator result value
+ */
+/**
+ * \brief Aggregator of global_topic_count and likelihood
+ */
 class VERTEX_CLASS_NAME(Aggregator): public Aggregator<aggr_type> {
 public:
     // type of m_global and m_local is the same with <type name>
@@ -375,43 +409,56 @@ public:
 };
 
 
-
-
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
+/**
+ * \brief The gibbs sampling in supersteps.
+ *  Each two supersteps are used as one Gibbs sample.
+ *  
+ * superstep 0 : initialize variables
+ * superstep even : word vertex sample, update self, assignment edges, send to doc vertex 
+ * superstep odd : doc vertex receive from word vertex, update self, send to word vetex
+ * 
+ */
 class VERTEX_CLASS_NAME(): public Vertex <vertex_data, edge_data, message_type> {
 public:
     void compute(MessageIterator* pmsgs) {
 
         vertex_data val;
 
-        // superstep 0 initialize variables
+        // superstep 0
         if(getSuperstep() == 0){
+
+            //  initialize variables
             val.factor.assign(NTOPICS, 0);
             val.outdegree = get_outdegree();
             if(getVertexId() < NDOCS) val.flag = 1;
             else val.flag = -1;
             assert(getVertexId() < NVERTICES);
 
-            // if current vertex is word, assign topic to edge
-            // and send edge data to to doc
+            // word vertex assign topic to edge and send edge data to to doc
             if(val.flag == IS_WORD){
+
                 // initialize edge assignment to NULL_TOPIC
                 init_edge_topic();
 
-                //vector_type global_topic_count(NTOPICS, 0);
-
                 vector_type& word_topic_count = val.factor;
 
-                OutEdgeIterator out_edge_it = getOutEdgeIterator();
                 //iterate all outedges and compute assignment topic
+                OutEdgeIterator out_edge_it = getOutEdgeIterator();
                 for ( ; !out_edge_it.done(); out_edge_it.next()){
+
+                    // probablity of multimonial
                     std::vector<double> prob(NTOPICS);
+
+                    // update in sampling and send to doc vertex
                     vector_type doc_topic_count(NTOPICS, 0);
-                    // temp variable assignment
-                    // need to be passed to edge data
+
+                    // temp variable assignment, need to be passed to edge data after sampling
                     vector_type assignment = out_edge_it.getValue().assignment;
-                    // compute assigment of one outedge
+
+                    // sample and compute each assigment on one outedge
                     for(size_t t = 0; t < assignment.size(); t++){
+
                         // asg is a referenc of assignment[t]
                         long& asg = assignment[t];
 
@@ -424,8 +471,11 @@ public:
 		                    prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
                             
 		  		        }
+
                         // get new asg using random multinomial
 		                asg = multinomial(prob);
+
+                        // update topic count of doc, word and global
 		                ++doc_topic_count[asg];
 		  			    ++word_topic_count[asg];
 		  			    ++global_topic_count[asg];
@@ -459,39 +509,35 @@ public:
             // superstep odd: doc vertex work
 		    if(getSuperstep() % 2 == 1){
        
-                // doc recv assign, send factor to word
+                // doc receive, update and send to word
                 if(val.flag==IS_DOC){
+ 
                     //receive new assignment from word vertex
-                    int count_change = 0;
                     for (;!pmsgs->done(); pmsgs->next()){	
-                        // add new assignment to old count factor
+
+                        // update count of topics
                         for(size_t t = 0 ; t < NTOPICS; t++){
 			     			val.factor[t] += pmsgs->getValue().factor[t];
-                
                         }
                     }  
 
-                    // send doc vertex factor to word
+                    // send doc vertex factor to all neighbor word vertex
                     message_type ms_send;
                     ms_send.vid = getVertexId();
                     for(size_t t = 0; t < NTOPICS;t++){
                         ms_send.factor[t] = val.factor[t];
                     }
-                    // too many out messages, can't use sendall
-                    // consider add worker or compress message
-
                     sendMessageToAllNeighbors(ms_send);
                 }
 
                 // compute aggregator
 	            accumulateAggr(0, &val);
-
 		    }
 
             // superstep even : word vertex work
 		    if(getSuperstep() % 2 == 0){
 
-                // check aggregator result and judge if voletohalt
+                // check aggregator result and judge if votetohalt
 				aggr_type* aggr = (aggr_type *)getAggrGlobal(0);
                 double likelihood = aggr->likelihood;
                 if(int64_t(getVertexId())==int64_t(0)){
@@ -501,18 +547,19 @@ public:
                 }
 
 
-               // volt to halt
-			    if(getSuperstep() > 800){// if likelihood < ESP
+               // vote to halt
+			    if(getSuperstep() > 10){// if likelihood < ESP
 			        voteToHalt(); return;   
 			    }
 
-                // word recv message from doc,
-                // update assignment of edge data
-                // and send new assignment to doc
+                // word receive, update, assignment and send 
                 if(val.flag == IS_WORD){
 
                     vector_type& word_topic_count = val.factor;
+
+                    // count of msg should equal to count of 
                     long count_msg = 0;
+
                     // each msg from one doc
                     // update the edge which connect current doc and this word
                     for (;!pmsgs->done();pmsgs->next()){
@@ -529,13 +576,14 @@ public:
                          for (; !out_edge_it.done(); out_edge_it.next()){
 
                               unsigned long long vid_to = out_edge_it.target();
-                              // if the edge is the one connect to current doc
-                              // update the assignment on this edge    
-                              // send message to current doc
-                              if(vid_from == vid_to){ // break for
-                                count_msg++;                                
 
-                                // point to edge data
+                              // if the edge connects to current doc, update the assignment on this edge    
+                              // and send message to current doc and break for
+                              if(vid_from == vid_to){
+
+                                count_msg++;      
+                          
+                                // use pointer p to change edge data.
                                 Edge* edge = (Edge *)(out_edge_it.current());
                                 edge_data* p = (edge_data *)(edge->weight);
                                 vector_type assignment = p->assignment;
@@ -543,6 +591,7 @@ public:
                                 // probability of multinomial
                                 std::vector<double> prob(NTOPICS);
 
+                                // sample and compute each new assignment 
 						        for(size_t t = 0; t < assignment.size(); t++){
 
 						            // asg is a referenc of assignment[t]
@@ -563,6 +612,8 @@ public:
 
 						            // get new asg using random multinomial
 								    asg = multinomial(prob);
+
+                                    // update topic counts of doc, word and global
 								    ++doc_topic_count[asg];
                                     ++doc_topic_change[asg];
 					  			    ++word_topic_count[asg];
@@ -571,7 +622,7 @@ public:
 
 								}
 
-						        // pass new assignment to current outedge data
+						        // update assignment on current outedge data
 						        for(size_t t = 0; t < assignment.size(); t++)
 						            (p->assignment)[t] = assignment[t];
 
@@ -581,8 +632,8 @@ public:
 								for(size_t t = 0; t < NTOPICS;t++){
 						            ms_send.factor[t] = doc_topic_change[t];
 						        }
-
 						        sendMessageTo(vid_to, ms_send);
+
                                 break; // end of outedge iterator
                               }
                          }
@@ -597,11 +648,14 @@ public:
 	    * mutableValue() = val;
 
     }
+
+    // get outdegree of this vertex
     int64_t get_outdegree(){
         int64_t rt = getOutEdgeIterator().size();
         return rt;
     }
 
+    // initialize topic on all edges as NULL_TOPIC
     void init_edge_topic(){
         OutEdgeIterator outEdges = getOutEdgeIterator();
    
@@ -637,7 +691,10 @@ public:
 
 };
 
-/** VERTEX_CLASS_NAME(Graph): set the running configuration here */
+/** 
+ * \brief VERTEX_CLASS_NAME(Graph): set the running configuration here.
+ * we use 1 master and 8 workers.
+ */
 class VERTEX_CLASS_NAME(Graph): public Graph {
 public:
     VERTEX_CLASS_NAME(Aggregator)* aggregator;
@@ -682,7 +739,9 @@ public:
     }
 };
 
-/* STOP: do not change the code below. */
+/* 
+ * \brief STOP: do not change the code below. 
+ */
 extern "C" Graph* create_graph() {
     Graph* pgraph = new VERTEX_CLASS_NAME(Graph);
 
@@ -699,5 +758,3 @@ extern "C" void destroy_graph(Graph* pobject) {
     delete ( VERTEX_CLASS_NAME(InputFormatter)* )(pobject->m_pin_formatter);
     delete ( VERTEX_CLASS_NAME(Graph)* )pobject;
 }
-
-
