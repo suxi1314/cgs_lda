@@ -1,4 +1,5 @@
-global_topic_count在什么尺度可见？
+global_topic_count is a global value, all vertex on a single worker
+solve: boost::atomic
 If NTOPICS > 10, the send function will abort?
-solve1: compress message
-solve2: add worker
+solve1: compress message(fail)
+solve2: add worker(success)

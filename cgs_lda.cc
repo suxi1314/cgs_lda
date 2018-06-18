@@ -34,12 +34,17 @@
 #include <boost/math/special_functions/gamma.hpp>
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
+#include <boost/atomic.hpp>
 #include <random>
 #include <unistd.h>
 
 #include "GraphLite.h"
 
 #define DEBUG // run on vm
+
+#include <vector>
+
+
 
 
 /**
@@ -57,7 +62,7 @@
 /**
  * the alpha parameter determines the sparsity of topics for each document.
  */
-double ALPHA = 1;
+double ALPHA = 1.0;
 
 /**
  * the Beta parameter determines the sparsity of words in each document.
@@ -120,6 +125,12 @@ typedef struct
     long factor[NTOPICS];
     unsigned long long vid;//Vertex ID
 }message_type;
+
+// global topic count
+using boost::atomic;
+boost::atomic<long> global_topic_count[NTOPICS] = {};
+
+
 
 /** VERTEX_CLASS_NAME(InputFormatter) can be kept as is */
 class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
@@ -262,6 +273,7 @@ public:
 log_gamma ALPHA_LGAMMA;
 log_gamma BETA_LGAMMA;
 
+
 /** VERTEX_CLASS_NAME(Aggregator): you can implement other types of aggregation */
 // the <type name> is the type of aggregator result value
 class VERTEX_CLASS_NAME(Aggregator): public Aggregator<aggr_type> {
@@ -280,9 +292,13 @@ public:
     void setGlobal(const void* p) {
         using boost::math::lgamma;
         aggr_type aggr = *(aggr_type *) p;
-        m_global.count[0] = aggr.count[0];
+
+
         //global_topic_count
-        for(int t = 0; t < NTOPICS; t++) m_global.count[t] = aggr.count[t]/2;
+        for(int t = 0; t < NTOPICS; t++){
+             m_global.count[t] = aggr.count[t]/2;
+             global_topic_count[t] = m_global.count[t];
+        }
         //likelihood
         double denominator = 0; // the denominator of the formula
         for(size_t t = 0; t < NTOPICS; ++t) {
@@ -344,8 +360,9 @@ public:
         m_local.lik_topics += lik_topics;
 
     }
-
 };
+
+
 
 
 /** VERTEX_CLASS_NAME(): the main vertex program with compute() */
@@ -370,14 +387,15 @@ public:
                 // initialize edge assignment to NULL_TOPIC
                 init_edge_topic();
 
-                std::vector<double> prob(NTOPICS);
-                vector_type global_topic_count(NTOPICS, 0);
-                vector_type doc_topic_count(NTOPICS, 0);
+                //vector_type global_topic_count(NTOPICS, 0);
+
                 vector_type& word_topic_count = val.factor;
 
                 OutEdgeIterator out_edge_it = getOutEdgeIterator();
                 //iterate all outedges and compute assignment topic
                 for ( ; !out_edge_it.done(); out_edge_it.next()){
+                    std::vector<double> prob(NTOPICS);
+                    vector_type doc_topic_count(NTOPICS, 0);
                     // temp variable assignment
                     // need to be passed to edge data
                     vector_type assignment = out_edge_it.getValue().assignment;
@@ -385,21 +403,16 @@ public:
                     for(size_t t = 0; t < assignment.size(); t++){
                         // asg is a referenc of assignment[t]
                         long& asg = assignment[t];
-                        if(asg != NULL_TOPIC){
-     			     
-			                --doc_topic_count[asg];
-       			            --word_topic_count[asg];
-        		            --global_topic_count[asg];
-     			        }
 
 		                // compute probability of multinomial
 		                for(size_t t = 0; t < NTOPICS; ++t){
+
 		                    const double n_dt = std::max(long(doc_topic_count[t]), long(0));
 		                    const double n_wt = std::max(long(word_topic_count[t]), long(0));
 		                    const double n_t  = std::max(long(global_topic_count[t]), long(0));
 		                    prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
+                            
 		  		        }
-
                         // get new asg using random multinomial
 		                asg = multinomial(prob);
 		                ++doc_topic_count[asg];
@@ -421,9 +434,10 @@ public:
                         ms_send.factor[t] = 0;
                     }
 		            for(size_t t = 0; t < assignment.size();t++){
-                        ms_send.factor[assignment[t]]++;
+                        ms_send.factor[t] = doc_topic_count[t];
                     }
                     sendMessageTo(vid_to, ms_send);
+
 
                 }
                    
@@ -439,14 +453,13 @@ public:
        
                 // doc recv assign, send factor to word
                 if(val.flag==IS_DOC){
-                    //printf("is_doc\n");
                     //receive new assignment from word vertex
+                    int count_change = 0;
                     for (;!pmsgs->done(); pmsgs->next()){	
-                        // if(pmsgs->done()) printf("error\n");
                         // add new assignment to old count factor
                         for(size_t t = 0 ; t < NTOPICS; t++){
 			     			val.factor[t] += pmsgs->getValue().factor[t];
-                           
+                
                         }
                     }  
 
@@ -456,11 +469,10 @@ public:
                     for(size_t t = 0; t < NTOPICS;t++){
                         ms_send.factor[t] = val.factor[t];
                     }
-                    // printf("%ld\n",  ms_send.factor[1]);
                     // too many out messages, can't use sendall
                     // consider add worker or compress message
+
                     sendMessageToAllNeighbors(ms_send);
-                    //printf("%ld\n",  ms_send.factor[1]);
                 }
 
                 // compute aggregator
@@ -473,23 +485,22 @@ public:
 
                 // check aggregator result and judge if voletohalt
 				aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
-                vector_type global_topic_count(NTOPICS, 0);
+                vector_type count(NTOPICS, 0);
                 for(size_t t; t < NTOPICS; t++){
-                    global_topic_count[t] = aggr.count[t];
+                    count[t] = aggr.count[t];
                 }
                 double likelihood = aggr.likelihood;
 				if(int64_t(getVertexId()) == int64_t(0)){
 				    for(size_t t = 0; t < NTOPICS; t++){
-				        printf("global_topic_count[%zu] = %ld\n", t, global_topic_count[t]);
+				        printf("count[%zu] = %ld\n", t, count[t]);
 				    }
 				    printf("likelihood = %lf\n", likelihood);
 				}
 
-				// volt to halt
-				if(getSuperstep() > 3){// if likelihood < ESP
-				    voteToHalt(); return;   
-				}
-
+               // volt to halt
+			    if(getSuperstep() > 20){// if likelihood < ESP
+			        voteToHalt(); return;   
+			    }
 
                 // word recv message from doc,
                 // update assignment of edge data
@@ -499,6 +510,7 @@ public:
                     // get global topic count from aggregator
                     aggr_type aggr = *(aggr_type *)getAggrGlobal(0);
                     vector_type& word_topic_count = val.factor;
+                    long count_msg = 0;
                     // each msg from one doc
                     // update the edge which connect current doc and this word
                     for (;!pmsgs->done();pmsgs->next()){
@@ -506,10 +518,11 @@ public:
                          message_type recv = pmsgs->getValue();
                          unsigned long long vid_from = recv.vid;
                          vector_type doc_topic_count(NTOPICS, 0);
+                         vector_type doc_topic_change(NTOPICS, 0);
                          for(size_t t; t < NTOPICS; t++){
 				             doc_topic_count[t] = recv.factor[t];
                          }
-
+                         
                          OutEdgeIterator out_edge_it = getOutEdgeIterator();
                          //iterate outedges to find the edge connect to current doc
                          for (; !out_edge_it.done(); out_edge_it.next()){
@@ -519,6 +532,7 @@ public:
                               // update the assignment on this edge    
                               // send message to current doc
                               if(vid_from == vid_to){ // break for
+                                count_msg++;                                
 
                                 // point to edge data
                                 Edge* edge = (Edge *)(out_edge_it.current());
@@ -532,12 +546,12 @@ public:
 
 						            // asg is a referenc of assignment[t]
 						            long& asg = assignment[t];
-                                    if(asg != NULL_TOPIC){
-			                            --doc_topic_count[asg];
-       			                        --word_topic_count[asg];
-        		                        --global_topic_count[asg];
-                			        }
 
+		                            --doc_topic_count[asg];
+                                    --doc_topic_change[asg];
+   			                        --word_topic_count[asg];
+    		                        --global_topic_count[asg];
+                                  
 								    // compute probability of multinomial
 								    for(size_t t = 0; t < NTOPICS; ++t){
 								        const double n_dt = std::max(long(doc_topic_count[t]), long(0));
@@ -549,8 +563,10 @@ public:
 						            // get new asg using random multinomial
 								    asg = multinomial(prob);
 								    ++doc_topic_count[asg];
+                                    ++doc_topic_change[asg];
 					  			    ++word_topic_count[asg];
 					  			    ++global_topic_count[asg];
+
 
 								}
 
@@ -565,14 +581,16 @@ public:
 						            ms_send.factor[t] = 0;
 						        }
 								for(size_t t = 0; t < assignment.size();t++){
-						            ms_send.factor[assignment[t]]++;
+						            ms_send.factor[t] = doc_topic_change[t];
 						        }
 
-						        sendMessageTo(vid_to, ms_send);    
+						        sendMessageTo(vid_to, ms_send);
                                 break; // end of outedge iterator
                               }
                          }
+                         
                     }
+                    assert( count_msg == val.outdegree);
                 }
 		    }
         }
@@ -598,30 +616,6 @@ public:
         return ;
     }
 
-    void scatter_edge_topic(){
-        OutEdgeIterator outEdges = getOutEdgeIterator();
-        for ( ; ! outEdges.done(); outEdges.next() ) {
-            Edge* edge = (Edge *)(outEdges.current());
-            edge_data* p = (edge_data *)(edge->weight);
-            //printf("ntoken = %zu\n", p->ntoken);
-            for(size_t t = 0; t < (p->ntoken); t++){
-                (p->assignment)[t] = t;
-            }
-        }
-        return ;
-    }
-
-    void gather_edge_topic(){
-        OutEdgeIterator outEdges = getOutEdgeIterator();
-        for ( ; ! outEdges.done(); outEdges.next() ) {
-            edge_data p = outEdges.getValue();
-            //printf("ntoken = %zu\n", p.ntoken);
-            for(size_t t = 0; t < (p.ntoken); t++){
-                //printf("asg[%zu] = %ld\n", t,(p.assignment)[t]);
-            }
-        }
-        return ;
-    }
     size_t multinomial(const std::vector<double>& prb) 
     {
 		std::default_random_engine generator;
@@ -685,6 +679,10 @@ public:
         aggregator = new VERTEX_CLASS_NAME(Aggregator)[1];
         regNumAggr(1);
         regAggr(0, &aggregator[0]);
+
+        ALPHA_LGAMMA.init(ALPHA, 100000);
+        BETA_LGAMMA.init(BETA, 1000000);
+
     }
 
     void term() {
