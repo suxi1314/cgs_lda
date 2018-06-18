@@ -158,7 +158,7 @@ typedef struct aggregator_struct{
 }aggr_type;
 
 /**
- * Computing log_gamma can be a bit slow so this class precomptues
+ * \brief Computing log_gamma can be a bit slow so this class precomptues
  * log gamma for a subset of values.
  */
 class log_gamma {
@@ -409,7 +409,9 @@ public:
 };
 
 
-/** VERTEX_CLASS_NAME(): the main vertex program with compute() */
+/** 
+ * \brief VERTEX_CLASS_NAME(): the main vertex program with compute() 
+ */
 /**
  * \brief The gibbs sampling in supersteps.
  *  Each two supersteps are used as one Gibbs sample.
