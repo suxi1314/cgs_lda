@@ -56,13 +56,26 @@
  */
 #define NTOPICS size_t(10)
 
+
+/**
+ * \brief define type of vertex id
+ */
+typedef unsigned long long vid_type;
+
+/**
+ * \brief define type of count of topics
+ * this type length is at least long.
+ */
+typedef long count_type;
+
+
 /**
  * \brief number of docs, words, vertices
  *
  */
-unsigned long long NDOCS;
-unsigned long long NWORDS;
-unsigned long long NVERTICES;
+vid_type NDOCS;
+vid_type NWORDS;
+vid_type NVERTICES;
 
 /**
  * \brief Define the flag of word or doc vertex
@@ -87,7 +100,7 @@ double BETA = 0.1;
  * \brief We need a null topic to represent the topic assignment for tokens 
  * that have not yet been assigned.
  */
-#define NULL_TOPIC long(-1)
+#define NULL_TOPIC count_type(-1)
 
 /**
 * \brief The vector type is used on each edge to store the
@@ -98,7 +111,7 @@ double BETA = 0.1;
 * each topic for words, documents, and assignments on vertices.
 * It is used in vertex_data.
 */
-typedef std::vector<long> vector_type;
+typedef std::vector<count_type> vector_type;
 
 
 /**
@@ -127,27 +140,28 @@ typedef struct edgeData{
     vector_type assignment;
 }edge_data;
 
+
 /**
 * \brief The messageData is contains an array and a number, the array can't be defined as a vector.
 */
 typedef struct messageData{
     // a vector of count
-    long factor[NTOPICS];
-    unsigned long long vid;//Vertex ID
+    count_type factor[NTOPICS];
+    vid_type vid;//Vertex ID
 }message_type;
 
 /**
  * \brief global topic count is atomic, because it can be read and write for all vertices in the same worker.
  */
 using boost::atomic;
-boost::atomic<long> global_topic_count[NTOPICS] = {};
+boost::atomic<count_type> global_topic_count[NTOPICS] = {};
 
 /**
  * \brief Data type of aggregator.
  */
 typedef struct aggregator_struct{
     // global topic count
-    long count[NTOPICS];
+    count_type count[NTOPICS];
     double lik_words_given_topics;
     double lik_topics;
     // likelihood
@@ -174,7 +188,7 @@ public:
     }
   }
 
-  double operator()(const long& index) const {
+  double operator()(const count_type& index) const {
     using boost::math::lgamma;
     if(index < values.size() && index >= 0) { return values[index]; }
     else { return lgamma(index + offset); }
@@ -201,14 +215,14 @@ log_gamma BETA_LGAMMA;
 class VERTEX_CLASS_NAME(InputFormatter): public InputFormatter {
 public:
     int64_t getVertexNum() {
-        unsigned long long n;
+        vid_type n;
         sscanf(m_ptotal_vertex_line, "%lld %lld %lld", &n, &NDOCS, &NWORDS);
         NVERTICES = NDOCS+NWORDS;
         m_total_vertex= n;
         return m_total_vertex;
     }
     int64_t getEdgeNum() {
-        unsigned long long n;
+        vid_type n;
         sscanf(m_ptotal_edge_line, "%lld", &n);
         m_total_edge= n;
         return m_total_edge;
@@ -227,9 +241,9 @@ public:
         return m_m_value_size;
     }
     void loadGraph() {
-        unsigned long long last_vertex;
-        unsigned long long from;
-        unsigned long long to;
+        vid_type last_vertex;
+        vid_type from;
+        vid_type to;
         edge_data weight;
 
         vertex_data value;
@@ -291,14 +305,14 @@ public:
             std::string factor = "";
             for(size_t t = 0; t < NTOPICS; t++){
                  char temp[20];
-                 sprintf(temp, "%-10lld", (unsigned long long)(value.factor[t]));
+                 sprintf(temp, "%-10ld", value.factor[t]);
                  factor += temp;
             }
             if(value.flag == IS_DOC){
-                n = sprintf(s, "%-5s:%-10lld: %s\n", "doc", (unsigned long long)vid, factor.c_str());
+                n = sprintf(s, "%-5s:%-10lld: %s\n", "doc", (vid_type)vid, factor.c_str());
             }else{
                 int64_t id = std::max(vid - int64_t(NDOCS), int64_t(0));
-                n = sprintf(s, "%-5s:%-10lld: %s\n", "word", (unsigned long long)id, factor.c_str());
+                n = sprintf(s, "%-5s:%-10lld: %s\n", "word", (vid_type)id, factor.c_str());
             }
             writeNextResLine(s, n);
         }
@@ -345,7 +359,7 @@ public:
         //likelihood
         double denominator = 0.0; // the denominator of the formula in paper
         for(size_t t = 0; t < NTOPICS; ++t) {
-            const long value = std::max(long(m_global.count[t]), long(0));
+            const count_type value = std::max(count_type(m_global.count[t]), count_type(0));
             denominator += lgamma(value + NWORDS * BETA);
         } 
 
@@ -387,13 +401,13 @@ public:
         double lik_topics = 0.0;
         if(flag==IS_WORD){
             for(size_t t = 0; t < NTOPICS; ++t) {
-                const long value = std::max(long(factor[t]), long(0));
+                const count_type value = std::max(count_type(factor[t]), count_type(0));
                 lik_words_given_topics += BETA_LGAMMA(value);
             }
         }else{
             double ntokens_in_doc = 0;
             for(size_t t = 0; t < NTOPICS; ++t) {
-                const long value = std::max(long(factor[t]), long(0));
+                const count_type value = std::max(count_type(factor[t]), count_type(0));
                 lik_topics += ALPHA_LGAMMA(value);
                 ntokens_in_doc += value;
             }
@@ -459,14 +473,14 @@ public:
                     for(size_t t = 0; t < assignment.size(); t++){
 
                         // asg is a referenc of assignment[t]
-                        long& asg = assignment[t];
+                        count_type& asg = assignment[t];
 
 		                // compute probability of multinomial
 		                for(size_t t = 0; t < NTOPICS; ++t){
 
-		                    const double n_dt = std::max(long(doc_topic_count[t]), long(0));
-		                    const double n_wt = std::max(long(word_topic_count[t]), long(0));
-		                    const double n_t  = std::max(long(global_topic_count[t]), long(0));
+		                    const double n_dt = std::max(count_type(doc_topic_count[t]), count_type(0));
+		                    const double n_wt = std::max(count_type(word_topic_count[t]), count_type(0));
+		                    const double n_t  = std::max(count_type(global_topic_count[t]), count_type(0));
 		                    prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
                             
 		  		        }
@@ -487,7 +501,7 @@ public:
                         (p->assignment)[t] = assignment[t];
 
                     // send new assignment to doc vertex
-                    unsigned long long vid_to = out_edge_it.target();
+                    vid_type vid_to = out_edge_it.target();
 	                message_type ms_send;
 		            ms_send.vid = getVertexId();
 		            for(size_t t = 0; t < NTOPICS;t++){
@@ -557,13 +571,13 @@ public:
                     vector_type& word_topic_count = val.factor;
 
                     // count of msg should equal to count of 
-                    long count_msg = 0;
+                    count_type count_msg = 0;
 
                     // each msg from one doc
                     // update the edge which connect current doc and this word
                     for (;!pmsgs->done();pmsgs->next()){
 
-                         unsigned long long vid_from = pmsgs->getValue().vid;
+                         vid_type vid_from = pmsgs->getValue().vid;
                          vector_type doc_topic_count(NTOPICS, 0);
                          vector_type doc_topic_change(NTOPICS, 0);
                          for(size_t t; t < NTOPICS; t++){
@@ -574,7 +588,7 @@ public:
                          //iterate outedges to find the edge connect to current doc
                          for (; !out_edge_it.done(); out_edge_it.next()){
 
-                              unsigned long long vid_to = out_edge_it.target();
+                              vid_type vid_to = out_edge_it.target();
 
                               // if the edge connects to current doc, update the assignment on this edge    
                               // and send message to current doc and break for
@@ -594,7 +608,7 @@ public:
 						        for(size_t t = 0; t < assignment.size(); t++){
 
 						            // asg is a referenc of assignment[t]
-						            long& asg = assignment[t];
+						            count_type& asg = assignment[t];
 
 		                            --doc_topic_count[asg];
                                     --doc_topic_change[asg];
@@ -603,9 +617,9 @@ public:
                                   
 								    // compute probability of multinomial
 								    for(size_t t = 0; t < NTOPICS; ++t){
-								        const double n_dt = std::max(long(doc_topic_count[t]), long(0));
-								        const double n_wt = std::max(long(word_topic_count[t]), long(0));
-								        const double n_t  = std::max(long(global_topic_count[t]), long(0));
+								        const double n_dt = std::max(count_type(doc_topic_count[t]), count_type(0));
+								        const double n_wt = std::max(count_type(word_topic_count[t]), count_type(0));
+								        const double n_t  = std::max(count_type(global_topic_count[t]), count_type(0));
 								        prob[t] = (ALPHA + n_dt) * (BETA + n_wt) / (BETA * NWORDS + n_t);
 					  		        }
 
